@@ -1,0 +1,2511 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duy Le — Multidisciplinary Problem Solver</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Fraunces", "Georgia", "serif"],
+              body: ["DM Sans", "sans-serif"],
+            },
+            colors: {
+              ink: "#0f172a",
+              paper: "#f8fafc",
+              accent: "#1E4FD8",
+              muted: "#64748b",
+              border: "#cbd5e1",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #f8fafc;
+        --fg: #0f172a;
+        --accent: #1e4fd8;
+        --muted: #64748b;
+        --surface: #f1f5f9;
+        --border: #cbd5e1;
+        --card: #ffffff;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--fg);
+        font-family: "DM Sans", sans-serif;
+        transition:
+          background-color 0.35s ease,
+          color 0.35s ease;
+        overflow-x: hidden;
+      }
+
+      /* ── Noise overlay ── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1000;
+        opacity: 0.5;
+      }
+
+      /* ── Typography ── */
+      .font-display {
+        font-family: "Fraunces", Georgia, serif;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Fraunces", Georgia, serif;
+      }
+
+      /* ── Nav ── */
+      nav {
+        background-color: var(--bg);
+        border-bottom: 1px solid var(--border);
+        transition:
+          background-color 0.35s ease,
+          border-color 0.35s ease;
+      }
+      .nav-link {
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 500;
+        transition: color 0.2s;
+        font-family: "DM Sans", sans-serif;
+      }
+      .nav-link:hover {
+        color: var(--accent);
+      }
+
+      /* ── Profile Header ── */
+      .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        height: 100%;
+        margin-bottom: 2rem;
+      }
+      .profile-image {
+        width: 168px;
+        height: 196.71px;
+      }
+      .profile-image img {
+        width: 100%;
+        height: 181.71px;
+        object-fit: fill;
+      }
+
+      /* ── Hero ── */
+      .hero-label {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 500;
+      }
+      .hero-title {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 300;
+        line-height: 1.06;
+        color: var(--fg);
+      }
+      .hero-title em {
+        font-style: italic;
+        color: var(--accent);
+      }
+      .hero-line {
+        width: 48px;
+        height: 1px;
+        background: var(--accent);
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 12px;
+      }
+      .hero-bio {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.75;
+        max-width: 500px;
+      }
+
+      /* ── Buttons ── */
+      .btn-primary {
+        background-color: var(--accent);
+        color: #fff;
+        padding: 0.75rem 1.75rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        display: inline-block;
+        text-decoration: none;
+      }
+      .btn-primary:hover {
+        opacity: 0.88;
+        transform: translateY(-1px);
+      }
+      .btn-outline {
+        border: 1px solid var(--border);
+        color: var(--fg);
+        padding: 0.75rem 1.75rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: transparent;
+        cursor: pointer;
+        transition:
+          border-color 0.2s,
+          color 0.2s,
+          transform 0.2s;
+        display: inline-block;
+        text-decoration: none;
+      }
+      .btn-outline:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        transform: translateY(-1px);
+      }
+
+      /* ── Section labels ── */
+      .section-label {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 500;
+      }
+      .section-title {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 300;
+        color: var(--fg);
+        line-height: 1.15;
+      }
+
+      /* ── Cards ── */
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 2rem;
+        transition:
+          border-color 0.25s,
+          transform 0.25s,
+          box-shadow 0.25s,
+          background-color 0.35s;
+      }
+      .card:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.07);
+      }
+
+      /* ── Tags ── */
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.68rem;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.25rem 0.65rem;
+        border-radius: 0;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        background: transparent;
+        transition:
+          background 0.2s,
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .tag.pm {
+        border-color: #1e4fd8;
+        color: #1e4fd8;
+        background: rgba(30, 79, 216, 0.07);
+      }
+      .tag.ux {
+        border-color: #7c3aed;
+        color: #7c3aed;
+        background: rgba(124, 58, 237, 0.07);
+      }
+      .tag.qa {
+        border-color: #0891b2;
+        color: #0891b2;
+        background: rgba(8, 145, 178, 0.07);
+      }
+      .tag.ops {
+        border-color: #0369a1;
+        color: #0369a1;
+        background: rgba(3, 105, 161, 0.07);
+      }
+
+      /* ── Filter tabs ── */
+      .filter-tab {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.5rem 1.2rem;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .filter-tab:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .filter-tab.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+
+      /* ── Filterable items ── */
+      .filterable {
+        transition:
+          opacity 0.35s ease,
+          transform 0.35s ease,
+          max-height 0.35s ease;
+      }
+      .filterable.hidden {
+        display: none;
+      }
+
+      /* ── Divider ── */
+      .divider {
+        width: 100%;
+        height: 1px;
+        background: var(--border);
+        transition: background 0.35s;
+      }
+
+      /* ── Skill pill ── */
+      .skill-pill {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.78rem;
+        font-weight: 400;
+        padding: 0.45rem 1rem;
+        border: 1px solid var(--border);
+        color: var(--fg);
+        background: var(--surface);
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+        display: inline-block;
+      }
+      .skill-pill:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* ── Timeline ── */
+      .timeline-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--accent);
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 6px;
+      }
+      .timeline-line {
+        width: 1px;
+        background: var(--border);
+        flex-shrink: 0;
+        margin-left: 3.5px;
+      }
+
+      /* ── Dark toggle ── */
+      .toggle-btn {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--border);
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.2s;
+        color: var(--muted);
+      }
+      .toggle-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* ── Fade-in on scroll ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ── Marquee ── */
+      .marquee-wrapper {
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .marquee-inner {
+        display: inline-block;
+        animation: marquee 22s linear infinite;
+      }
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .marquee-item {
+        display: inline-block;
+        margin: 0 2.5rem;
+        font-family: "Fraunces", serif;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: var(--muted);
+      }
+
+      /* ── Award badge ── */
+      .award-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.68rem;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #f59e0b;
+        background: rgba(245, 158, 11, 0.1);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        padding: 0.3rem 0.7rem;
+      }
+
+      /* ── Contact ── */
+      .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .contact-link:hover {
+        color: var(--accent);
+      }
+      .contact-link svg {
+        flex-shrink: 0;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 2px;
+      }
+
+      @media (max-width: 550px) {
+        .hero-title {
+          font-size: 5rem !important;
+        }
+        .filter-row {
+          gap: 0.5rem;
+        }
+        .profile-image {
+          width: 168px;
+          height: 169.6px;
+        }
+        .profile-image img {
+          width: 100%;
+          height: 158.71px;
+          object-fit: fill;
+        }
+      }
+      @media (max-width: 400px) {
+        .hero-title {
+          font-size: 4rem !important;
+        }
+        .profile-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+        }
+        .filter-row {
+          gap: 0.5rem;
+        }
+        .profile-image {
+          width: 118px;
+          height: 135.68px;
+        }
+        .profile-image img {
+          width: 100%;
+          height: 126.71px;
+          object-fit: fill;
+        }
+      }
+      /* ── Blinking Cursor ── */
+      .blinking-cursor {
+        font-weight: 400;
+        color: var(--accent);
+        animation: blink 1s step-end infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════════════════════════════════════
+     NAV
+══════════════════════════════════════════ -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50"
+      style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px)"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 flex items-center justify-between"
+        style="height: 60px"
+      >
+        <a
+          href="#"
+          class="font-display text-lg font-light tracking-tight"
+          style="color: var(--fg)"
+        >
+          DL<span style="color: var(--accent)">.</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#education" class="nav-link">Education</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+    <section
+      id="home"
+      style="
+        padding-top: 130px;
+        padding-bottom: 80px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      "
+    >
+      <div class="max-w-6xl mx-auto px-6 w-full">
+        <div class="grid md:grid-cols-12 gap-12 items-start">
+          <!-- Left col -->
+          <div class="md:col-span-7 reveal">
+            <p class="hero-label mb-6">
+              <span class="hero-line"></span>Multidisciplinary Problem Solver
+            </p>
+            <div class="profile-header">
+              <h1 class="hero-title" style="font-size: 5.8rem">
+                Duy<br /><em>Le.</em>
+              </h1>
+              <div class="profile-image">
+                <img src="./svg.svg" alt="face_pic" />
+              </div>
+            </div>
+            <p
+              style="
+                font-family: &quot;DM Sans&quot;, sans-serif;
+                font-size: 0.8rem;
+                font-weight: 500;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 1.25rem;
+              "
+            >
+              Data-driven problem solver bridging UX strategy,<br
+                class="hidden md:block"
+              />
+              system quality, and project operations.
+            </p>
+            <div
+              class="divider"
+              style="margin-bottom: 1.75rem; max-width: 320px"
+            ></div>
+            <p class="hero-bio" style="margin-bottom: 2.5rem">
+              I transition complex requirements into scalable digital solutions.
+              With a unique foundation in Management Information Systems, UI/UX,
+              and Quality Assurance, I lead cross-functional teams to deliver
+              high-impact products—whether it's an AI tool, a secure banking
+              system, or an award-winning indie band.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap">
+              <a href="#experience" class="btn-primary">View Projects</a>
+              <a href="#contact" class="btn-outline">Contact Me</a>
+            </div>
+          </div>
+
+          <!-- Right col — stat cards -->
+          <div class="md:col-span-5 reveal" style="transition-delay: 0.15s">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="card" style="grid-column: span 2">
+                <p class="section-label" style="margin-bottom: 0.5rem">
+                  Currently Available
+                </p>
+                <p
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 300;
+                    font-size: 1.5rem;
+                    line-height: 1.2;
+                    color: var(--fg);
+                  "
+                >
+                  Open to full-time<br />& contract roles
+                </p>
+              </div>
+              <div class="card" style="text-align: center">
+                <p
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 300;
+                    font-size: 2.8rem;
+                    color: var(--accent);
+                    line-height: 1;
+                  "
+                >
+                  4
+                </p>
+                <p
+                  style="
+                    font-size: 0.7rem;
+                    font-family: &quot;DM Sans&quot;, sans-serif;
+                    font-weight: 500;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--muted);
+                    margin-top: 0.3rem;
+                  "
+                >
+                  Disciplines
+                </p>
+              </div>
+              <div class="card" style="text-align: center">
+                <p
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 300;
+                    font-size: 2.8rem;
+                    color: var(--accent);
+                    line-height: 1;
+                  "
+                >
+                  7+
+                </p>
+                <p
+                  style="
+                    font-size: 0.7rem;
+                    font-family: &quot;DM Sans&quot;, sans-serif;
+                    font-weight: 500;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--muted);
+                    margin-top: 0.3rem;
+                  "
+                >
+                  Projects
+                </p>
+              </div>
+
+              <!-- DYNAMIC QUOTE CARD -->
+              <div
+                id="quote-card"
+                class="card"
+                style="
+                  grid-column: span 2;
+                  border-left: 3px solid var(--accent);
+                  min-height: 140px;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                "
+              >
+                <p
+                  id="quote-text"
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-style: italic;
+                    font-weight: 300;
+                    font-size: 1.05rem;
+                    color: var(--fg);
+                    line-height: 1.6;
+                  "
+                >
+                  "Design is not just what it looks like and feels like. Design
+                  is how it works."
+                </p>
+                <p
+                  id="quote-author"
+                  style="
+                    font-family: &quot;DM Sans&quot;, sans-serif;
+                    font-size: 0.75rem;
+                    color: var(--muted);
+                    margin-top: 0.75rem;
+                    text-align: right;
+                    font-weight: 500;
+                    letter-spacing: 0.05em;
+                    text-transform: uppercase;
+                  "
+                >
+                  – Steve Jobs
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Marquee strip ── -->
+    <div
+      class="marquee-wrapper py-4"
+      style="
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      "
+    >
+      <div class="marquee-inner">
+        <span class="marquee-item">Product Management</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">UX / UI Design</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Quality Assurance</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Music Operations</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Requirement Engineering</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Agile / Scrum</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Real User Monitoring</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Figma</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Product Management</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">UX / UI Design</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Quality Assurance</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Music Operations</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Requirement Engineering</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Agile / Scrum</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Real User Monitoring</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+        <span class="marquee-item">Figma</span
+        ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+     EXPERIENCE
+══════════════════════════════════════════ -->
+    <section id="experience" style="padding: 100px 0">
+      <div class="max-w-6xl mx-auto px-6">
+        <!-- Header -->
+        <div class="grid md:grid-cols-12 gap-8 items-end mb-14 reveal">
+          <div class="md:col-span-7">
+            <p class="section-label mb-3">Work Experience</p>
+            <h2
+              class="section-title"
+              style="font-size: clamp(2.2rem, 4vw, 3.5rem)"
+            >
+              Where I've<br />made an impact.
+            </h2>
+          </div>
+          <div class="md:col-span-5">
+            <p
+              style="color: var(--muted); font-size: 0.9rem; line-height: 1.75"
+            >
+              From banking security systems to AI generative tools and live
+              music production — each role demanded a different lens, and I wore
+              them all.
+            </p>
+          </div>
+        </div>
+
+        <!-- Filter tabs for experience -->
+        <div class="reveal" style="margin-bottom: 2.5rem">
+          <div class="flex flex-wrap gap-2" id="exp-filters">
+            <button
+              class="filter-tab active"
+              data-filter="all"
+              data-section="exp"
+            >
+              All
+            </button>
+            <button class="filter-tab" data-filter="pm" data-section="exp">
+              Product Management
+            </button>
+            <button class="filter-tab" data-filter="ux" data-section="exp">
+              UX/UI Design
+            </button>
+            <button class="filter-tab" data-filter="qa" data-section="exp">
+              QA & Systems
+            </button>
+            <button class="filter-tab" data-filter="ops" data-section="exp">
+              Operations / Music
+            </button>
+          </div>
+        </div>
+
+        <!-- Experience cards -->
+        <div class="grid gap-6" id="exp-grid">
+          <!-- Template.net -->
+          <div
+            class="card filterable reveal"
+            data-tags="pm ux qa"
+            style="transition-delay: 0.05s"
+          >
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div>
+                <p class="section-label mb-1">July 2025 – Oct 2025</p>
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: 1.45rem;
+                    color: var(--fg);
+                    margin-bottom: 0.25rem;
+                  "
+                >
+                  Associate Product Designer<br /><span
+                    style="color: var(--muted); font-weight: 300"
+                    >&amp; Quality Analyst</span
+                  >
+                </h3>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                  "
+                >
+                  Template.net
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag ux">UX/UI</span>
+                <span class="tag qa">QA</span>
+                <span class="tag pm">PM</span>
+              </div>
+            </div>
+            <div class="divider" style="margin-bottom: 1.25rem"></div>
+            <ul
+              style="
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.65rem;
+              "
+            >
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start">
+                <span
+                  style="color: var(--accent); margin-top: 3px; flex-shrink: 0"
+                  >→</span
+                >
+                <span
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.65;
+                  "
+                  >Managed design and QA across
+                  <strong style="color: var(--fg)">3 AI generative tools</strong
+                  >, ensuring feature integrity from concept to release.</span
+                >
+              </li>
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start">
+                <span
+                  style="color: var(--accent); margin-top: 3px; flex-shrink: 0"
+                  >→</span
+                >
+                <span
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.65;
+                  "
+                  >Optimised funnel retention by identifying exit points through
+                  <strong style="color: var(--fg)"
+                    >Real User Monitoring (RUM)</strong
+                  >
+                  tools, driving data-backed design improvements.</span
+                >
+              </li>
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start">
+                <span
+                  style="color: var(--accent); margin-top: 3px; flex-shrink: 0"
+                  >→</span
+                >
+                <span
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.65;
+                  "
+                  >Tracked and resolved
+                  <strong style="color: var(--fg)">14+ daily UI/UX bugs</strong
+                  >, maintaining a rapid triage cycle to uphold product
+                  quality.</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- THD Cybersecurity -->
+          <div
+            class="card filterable reveal"
+            data-tags="pm ux qa"
+            style="transition-delay: 0.1s"
+          >
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div>
+                <p class="section-label mb-1">May 2024 – June 2025</p>
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: 1.45rem;
+                    color: var(--fg);
+                    margin-bottom: 0.25rem;
+                  "
+                >
+                  Product System Analyst<br /><span
+                    style="color: var(--muted); font-weight: 300"
+                    >&amp; UX Designer</span
+                  >
+                </h3>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                  "
+                >
+                  THD Cybersecurity
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag pm">PM</span>
+                <span class="tag ux">UX/UI</span>
+                <span class="tag qa">QA</span>
+              </div>
+            </div>
+            <div class="divider" style="margin-bottom: 1.25rem"></div>
+            <ul
+              style="
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.65rem;
+              "
+            >
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start">
+                <span
+                  style="color: var(--accent); margin-top: 3px; flex-shrink: 0"
+                  >→</span
+                >
+                <span
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.65;
+                  "
+                  >Owned requirement engineering for
+                  <strong style="color: var(--fg)">7+ security projects</strong>
+                  for HSC &amp; ACB banks, defining PRDs and SRS documentation
+                  from scratch.</span
+                >
+              </li>
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start">
+                <span
+                  style="color: var(--accent); margin-top: 3px; flex-shrink: 0"
+                  >→</span
+                >
+                <span
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.65;
+                  "
+                  >Reduced design-to-development cycles by
+                  <strong style="color: var(--fg)">57%</strong> through
+                  streamlined handoff workflows and Figma component
+                  standardisation.</span
+                >
+              </li>
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start">
+                <span
+                  style="color: var(--accent); margin-top: 3px; flex-shrink: 0"
+                  >→</span
+                >
+                <span
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.65;
+                  "
+                  >Audited PRD/SRS documents for
+                  <strong style="color: var(--fg)">technical feasibility</strong
+                  >, bridging gaps between security engineering teams and UX
+                  stakeholders.</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- THEMÈO Band -->
+          <div
+            class="card filterable reveal"
+            data-tags="ops"
+            style="transition-delay: 0.15s"
+          >
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div>
+                <p class="section-label mb-1">2024 – 2026</p>
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: 1.45rem;
+                    color: var(--fg);
+                    margin-bottom: 0.25rem;
+                  "
+                >
+                  Operations Lead &amp; Bassist
+                </h3>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                  "
+                >
+                  THEMÈO Band
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2 items-center">
+                <span class="award-badge">
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+                    />
+                  </svg>
+                  Grand Winner HOZO 2024
+                </span>
+                <span class="tag ops">Operations</span>
+              </div>
+            </div>
+            <div class="divider" style="margin-bottom: 1.25rem"></div>
+            <ul
+              style="
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.65rem;
+              "
+            >
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start">
+                <span
+                  style="color: var(--accent); margin-top: 3px; flex-shrink: 0"
+                  >→</span
+                >
+                <span
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.65;
+                  "
+                  >Optimised release cycles using
+                  <strong style="color: var(--fg)">streaming analytics</strong>,
+                  driving
+                  <strong style="color: var(--fg)">100K+ views</strong> across
+                  digital platforms.</span
+                >
+              </li>
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start">
+                <span
+                  style="color: var(--accent); margin-top: 3px; flex-shrink: 0"
+                  >→</span
+                >
+                <span
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.65;
+                  "
+                  >Managed brand partnerships with
+                  <strong style="color: var(--fg)">Marshall</strong> and
+                  <strong style="color: var(--fg)">Vans</strong>, negotiating
+                  assets, timelines, and creative deliverables.</span
+                >
+              </li>
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start">
+                <span
+                  style="color: var(--accent); margin-top: 3px; flex-shrink: 0"
+                  >→</span
+                >
+                <span
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.65;
+                  "
+                  >Coordinated cross-functional music production operations,
+                  from booking to post-production scheduling, as Grand Winner of
+                  HOZO 2024.</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     PROJECTS
+══════════════════════════════════════════ -->
+    <section
+      id="projects"
+      style="
+        padding: 100px 0;
+        background: var(--surface);
+        transition: background 0.35s;
+      "
+    >
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-12 gap-8 items-end mb-14 reveal">
+          <div class="md:col-span-7">
+            <p class="section-label mb-3">Key Projects</p>
+            <h2
+              class="section-title"
+              style="font-size: clamp(2.2rem, 4vw, 3.5rem)"
+            >
+              Selected work<br />&amp; outcomes.
+            </h2>
+          </div>
+          <div class="md:col-span-5">
+            <p
+              style="color: var(--muted); font-size: 0.9rem; line-height: 1.75"
+            >
+              High-stakes, time-boxed challenges that demanded full-stack
+              thinking — from research to business logic to final pitch.
+            </p>
+          </div>
+        </div>
+
+        <!-- Filter tabs for projects -->
+        <div class="reveal" style="margin-bottom: 2.5rem">
+          <div class="flex flex-wrap gap-2" id="proj-filters">
+            <button
+              class="filter-tab active"
+              data-filter="all"
+              data-section="proj"
+            >
+              All
+            </button>
+            <button class="filter-tab" data-filter="pm" data-section="proj">
+              Product Management
+            </button>
+            <button class="filter-tab" data-filter="ux" data-section="proj">
+              UX/UI Design
+            </button>
+            <button class="filter-tab" data-filter="qa" data-section="proj">
+              QA & Systems
+            </button>
+            <button class="filter-tab" data-filter="ops" data-section="proj">
+              Operations / Music
+            </button>
+          </div>
+        </div>
+
+        <!-- Project cards grid -->
+        <div class="grid md:grid-cols-2 gap-6" id="proj-grid">
+          <!-- Spendy -->
+          <div
+            class="card filterable reveal"
+            data-tags="pm ux"
+            style="
+              transition-delay: 0.05s;
+              position: relative;
+              overflow: hidden;
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-family: &quot;Fraunces&quot;, serif;
+                font-style: italic;
+                font-weight: 300;
+                font-size: 5rem;
+                color: var(--border);
+                line-height: 1;
+                padding: 0.5rem 1rem;
+                pointer-events: none;
+                user-select: none;
+              "
+            >
+              01
+            </div>
+            <p class="section-label mb-1">VPBank Hackathon 2025</p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 0.75rem;
+              "
+            >
+              <span
+                class="award-badge"
+                style="
+                  color: #38bdf8;
+                  background: rgba(56, 189, 248, 0.1);
+                  border-color: rgba(56, 189, 248, 0.3);
+                "
+              >
+                Semi-Finalist
+              </span>
+            </div>
+            <h3
+              style="
+                font-family: &quot;Fraunces&quot;, serif;
+                font-weight: 400;
+                font-size: 1.6rem;
+                color: var(--fg);
+                margin-bottom: 0.35rem;
+                line-height: 1.2;
+              "
+            >
+              Spendy<br /><span style="color: var(--accent)"
+                >Digital Wallet</span
+              >
+            </h3>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.8rem;
+                font-weight: 500;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-bottom: 1.25rem;
+              "
+            >
+              Role: Hybrid Lead (PM + UX)
+            </p>
+            <div class="divider" style="margin-bottom: 1.25rem"></div>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.9rem;
+                line-height: 1.7;
+                margin-bottom: 1.5rem;
+              "
+            >
+              End-to-end ideation and business analysis for an AI-powered
+              financial MVP, conceived and delivered in
+              <strong style="color: var(--fg)">7 days</strong>. Defined the
+              product vision, user flows, and monetisation logic under
+              competitive pressure.
+            </p>
+            <div
+              class="mt-4 pt-4 flex items-center justify-between"
+              style="border-top: 1px solid var(--border)"
+            >
+              <div class="flex flex-wrap gap-2">
+                <span class="tag pm">PM</span>
+                <span class="tag ux">UX/UI</span>
+              </div>
+              <a
+                href="https://www.figma.com/deck/4FuEujPfJLIZzeB9oATfUs/Spendy-Showcase?node-id=1-61&viewport=-148%2C-157%2C0.72&t=eJd5TInYPjroMNiG-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
+                target="_blank"
+                rel="noopener"
+                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                style="
+                  text-decoration: none;
+                  color: var(--muted);
+                  white-space: nowrap;
+                "
+                onmouseover="this.style.color = 'var(--accent)'"
+                onmouseout="this.style.color = 'var(--muted)'"
+              >
+                See Details
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  style="transition: transform 0.3s ease; flex-shrink: 0"
+                  onmouseover="this.style.transform = 'translateX(3px)'"
+                  onmouseout="this.style.transform = 'translateX(0)'"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Chóp Chéc -->
+          <div
+            class="card filterable reveal"
+            data-tags="pm ux"
+            style="transition-delay: 0.1s; position: relative; overflow: hidden"
+          >
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-family: &quot;Fraunces&quot;, serif;
+                font-style: italic;
+                font-weight: 300;
+                font-size: 5rem;
+                color: var(--border);
+                line-height: 1;
+                padding: 0.5rem 1rem;
+                pointer-events: none;
+                user-select: none;
+              "
+            >
+              02
+            </div>
+            <p class="section-label mb-1">Designathon 2025</p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 0.75rem;
+              "
+            >
+              <span class="award-badge">
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+                  />
+                </svg>
+                Runner-up
+              </span>
+            </div>
+            <h3
+              style="
+                font-family: &quot;Fraunces&quot;, serif;
+                font-weight: 400;
+                font-size: 1.6rem;
+                color: var(--fg);
+                margin-bottom: 0.35rem;
+                line-height: 1.2;
+              "
+            >
+              Chóp Chéc<br /><span style="color: var(--accent)"
+                >AI Platform</span
+              >
+            </h3>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.8rem;
+                font-weight: 500;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-bottom: 1.25rem;
+              "
+            >
+              Role: UX Lead
+            </p>
+            <div class="divider" style="margin-bottom: 1.25rem"></div>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.9rem;
+                line-height: 1.7;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Directed product strategy, funnel flows, and business logic
+              validation for AI-driven academic data models. Synthesised user
+              research into a coherent product narrative that secured Runner-up
+              honours.
+            </p>
+            <div
+              class="mt-4 pt-4 flex items-center justify-between"
+              style="border-top: 1px solid var(--border)"
+            >
+              <div class="flex flex-wrap gap-2">
+                <span class="tag ux">UX/UI</span>
+                <span class="tag pm">PM</span>
+              </div>
+              <a
+                href="https://lollypop.design/blog/personalized-career-exploration-platforms-for-students/"
+                target="_blank"
+                rel="noopener"
+                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                style="
+                  text-decoration: none;
+                  color: var(--muted);
+                  white-space: nowrap;
+                "
+                onmouseover="this.style.color = 'var(--accent)'"
+                onmouseout="this.style.color = 'var(--muted)'"
+              >
+                See Details
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  style="transition: transform 0.3s ease; flex-shrink: 0"
+                  onmouseover="this.style.transform = 'translateX(3px)'"
+                  onmouseout="this.style.transform = 'translateX(0)'"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="card filterable reveal"
+            data-tags="ops"
+            style="
+              transition-delay: 0.15s;
+              position: relative;
+              overflow: hidden;
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-family: &quot;Fraunces&quot;, serif;
+                font-style: italic;
+                font-weight: 300;
+                font-size: 5rem;
+                color: var(--border);
+                line-height: 1;
+                padding: 0.5rem 1rem;
+                pointer-events: none;
+                user-select: none;
+              "
+            >
+              03
+            </div>
+            <p class="section-label mb-1">2024 – 2026</p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 0.75rem;
+              "
+            >
+              <span
+                class="award-badge"
+                style="
+                  color: #1e4fd8;
+                  background: rgba(30, 79, 216, 0.1);
+                  border-color: rgba(30, 79, 216, 0.3);
+                "
+              >
+                Brand Partnerships
+              </span>
+            </div>
+            <h3
+              style="
+                font-family: &quot;Fraunces&quot;, serif;
+                font-weight: 400;
+                font-size: 1.6rem;
+                color: var(--fg);
+                margin-bottom: 0.35rem;
+                line-height: 1.2;
+              "
+            >
+              Music A&amp;R<br /><span style="color: var(--accent)"
+                >Operations</span
+              >
+            </h3>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.8rem;
+                font-weight: 500;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-bottom: 1.25rem;
+              "
+            >
+              Role: Operations Lead
+            </p>
+            <div class="divider" style="margin-bottom: 1.25rem"></div>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.9rem;
+                line-height: 1.7;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Directed the strategic roadmap and end-to-end distribution across
+              global DSPs. Managed cross-functional teams (Production,
+              Marketing, Legal) and brokered co-branding campaigns with
+              <strong style="color: var(--fg)"
+                >Marshall, Vans, DirtyCoins, and DEGREY</strong
+              >. Leveraged streaming analytics to optimize release cycles,
+              driving 100K+ views.
+            </p>
+            <div
+              class="mt-4 pt-4 flex items-center justify-between"
+              style="border-top: 1px solid var(--border)"
+            >
+              <div class="flex flex-wrap gap-2">
+                <span class="tag ops">Operations</span>
+              </div>
+              <a
+                href="https://myown-portfolio.my.canva.site/profile-themeo"
+                target="_blank"
+                rel="noopener"
+                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                style="
+                  text-decoration: none;
+                  color: var(--muted);
+                  white-space: nowrap;
+                "
+                onmouseover="this.style.color = 'var(--accent)'"
+                onmouseout="this.style.color = 'var(--muted)'"
+              >
+                See Details
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  style="transition: transform 0.3s ease; flex-shrink: 0"
+                  onmouseover="this.style.transform = 'translateX(3px)'"
+                  onmouseout="this.style.transform = 'translateX(0)'"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Network Monitoring Dashboard -->
+          <div
+            class="card filterable reveal"
+            data-tags="ux"
+            style="transition-delay: 0.2s; position: relative; overflow: hidden"
+          >
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-family: &quot;Fraunces&quot;, serif;
+                font-style: italic;
+                font-weight: 300;
+                font-size: 5rem;
+                color: var(--border);
+                line-height: 1;
+                padding: 0.5rem 1rem;
+                pointer-events: none;
+                user-select: none;
+              "
+            >
+              04
+            </div>
+            <p class="section-label mb-1">
+              THD Cybersecurity | 3-Month Project
+            </p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 0.75rem;
+              "
+            >
+              <span
+                class="award-badge"
+                style="
+                  color: #0891b2;
+                  background: rgba(8, 145, 178, 0.1);
+                  border-color: rgba(8, 145, 178, 0.3);
+                "
+              >
+                Dashboard Rework
+              </span>
+            </div>
+            <h3
+              style="
+                font-family: &quot;Fraunces&quot;, serif;
+                font-weight: 400;
+                font-size: 1.6rem;
+                color: var(--fg);
+                margin-bottom: 0.35rem;
+                line-height: 1.2;
+              "
+            >
+              Network Monitoring<br /><span style="color: var(--accent)"
+                >Dashboard</span
+              >
+            </h3>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.8rem;
+                font-weight: 500;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-bottom: 1.25rem;
+              "
+            >
+              Role: UX/UI Designer
+            </p>
+            <div class="divider" style="margin-bottom: 1.25rem"></div>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.9rem;
+                line-height: 1.7;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Conducted deep user research and behavior analysis to rework the
+              product. Scaled the interface logic to transition functionality
+              from the network team to the R&amp;D department, ensuring
+              high-density data clarity.
+            </p>
+            <div
+              class="mt-4 pt-4 flex items-center justify-between"
+              style="border-top: 1px solid var(--border)"
+            >
+              <div class="flex flex-wrap gap-2">
+                <span class="tag ux">UX/UI</span>
+              </div>
+              <a
+                href="https://www.figma.com/deck/nZD2V31ALy3hi3KuTsW3ti/Pig-Data-Rework?node-id=187-593&viewport=-148%2C-139%2C0.72&t=Vyjkw4BgBFeY7eCr-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
+                target="_blank"
+                rel="noopener"
+                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                style="
+                  text-decoration: none;
+                  color: var(--muted);
+                  white-space: nowrap;
+                "
+                onmouseover="this.style.color = 'var(--accent)'"
+                onmouseout="this.style.color = 'var(--muted)'"
+              >
+                See Details
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  style="transition: transform 0.3s ease; flex-shrink: 0"
+                  onmouseover="this.style.transform = 'translateX(3px)'"
+                  onmouseout="this.style.transform = 'translateX(0)'"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Vexere Product Breakdown -->
+          <div
+            class="card filterable reveal"
+            data-tags="ux"
+            style="
+              transition-delay: 0.25s;
+              position: relative;
+              overflow: hidden;
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-family: &quot;Fraunces&quot;, serif;
+                font-style: italic;
+                font-weight: 300;
+                font-size: 5rem;
+                color: var(--border);
+                line-height: 1;
+                padding: 0.5rem 1rem;
+                pointer-events: none;
+                user-select: none;
+              "
+            >
+              05
+            </div>
+            <p class="section-label mb-1">Personal Project | 3-Day Sprint</p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 0.75rem;
+              "
+            >
+              <span
+                class="award-badge"
+                style="
+                  color: #7c3aed;
+                  background: rgba(124, 58, 237, 0.1);
+                  border-color: rgba(124, 58, 237, 0.3);
+                "
+              >
+                UX Audit
+              </span>
+            </div>
+            <h3
+              style="
+                font-family: &quot;Fraunces&quot;, serif;
+                font-weight: 400;
+                font-size: 1.6rem;
+                color: var(--fg);
+                margin-bottom: 0.35rem;
+                line-height: 1.2;
+              "
+            >
+              Vexere Product<br /><span style="color: var(--accent)"
+                >Breakdown</span
+              >
+            </h3>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.8rem;
+                font-weight: 500;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-bottom: 1.25rem;
+              "
+            >
+              Role: Independent Researcher
+            </p>
+            <div class="divider" style="margin-bottom: 1.25rem"></div>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.9rem;
+                line-height: 1.7;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Performed a comprehensive product breakdown including UX Audit and
+              Heuristic Evaluation. Analyzed user flows, goals, and information
+              architecture to propose a redesigned interface that solves
+              identified friction points.
+            </p>
+            <div
+              class="mt-4 pt-4 flex items-center justify-between"
+              style="border-top: 1px solid var(--border)"
+            >
+              <div class="flex flex-wrap gap-2">
+                <span class="tag ux">UX/UI</span>
+              </div>
+              <a
+                href="https://www.figma.com/board/D4HFaNIKcchJub6ovmf1lb/Vexere-Product-Breakdown?node-id=0-1&t=0N3pniQJDMTuVdZT-1"
+                target="_blank"
+                rel="noopener"
+                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                style="
+                  text-decoration: none;
+                  color: var(--muted);
+                  white-space: nowrap;
+                "
+                onmouseover="this.style.color = 'var(--accent)'"
+                onmouseout="this.style.color = 'var(--muted)'"
+              >
+                See Details
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  style="transition: transform 0.3s ease; flex-shrink: 0"
+                  onmouseover="this.style.transform = 'translateX(3px)'"
+                  onmouseout="this.style.transform = 'translateX(0)'"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     SKILLS
+══════════════════════════════════════════ -->
+    <section id="skills" style="padding: 100px 0">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-12 gap-12 items-start">
+          <div class="md:col-span-4 reveal">
+            <p class="section-label mb-3">Toolkit</p>
+            <h2
+              class="section-title"
+              style="font-size: clamp(2rem, 3.5vw, 3rem)"
+            >
+              Skills &amp;<br />Competencies.
+            </h2>
+            <div
+              class="divider"
+              style="margin: 1.5rem 0; max-width: 60px"
+            ></div>
+            <p
+              style="color: var(--muted); font-size: 0.9rem; line-height: 1.75"
+            >
+              A deliberately broad stack — because the best product decisions
+              live at the intersections.
+            </p>
+          </div>
+          <div class="md:col-span-8 reveal" style="transition-delay: 0.1s">
+            <div style="margin-bottom: 2.5rem">
+              <p
+                style="
+                  font-size: 0.7rem;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  font-weight: 600;
+                  color: var(--accent);
+                  margin-bottom: 1rem;
+                "
+              >
+                Strategy &amp; Process
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="skill-pill">Product Strategy</span>
+                <span class="skill-pill"
+                  >Requirement Engineering (PRD/SRS)</span
+                >
+                <span class="skill-pill">Agile / Scrum</span>
+                <span class="skill-pill">Business Analysis</span>
+                <span class="skill-pill">Cross-functional Leadership</span>
+              </div>
+            </div>
+            <div style="margin-bottom: 2.5rem">
+              <p
+                style="
+                  font-size: 0.7rem;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  font-weight: 600;
+                  color: var(--accent);
+                  margin-bottom: 1rem;
+                "
+              >
+                Design &amp; Research
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="skill-pill">UX Research</span>
+                <span class="skill-pill">Figma</span>
+                <span class="skill-pill">Real User Monitoring (RUM)</span>
+                <span class="skill-pill">Funnel Optimisation</span>
+                <span class="skill-pill">Information Architecture</span>
+              </div>
+            </div>
+            <div>
+              <p
+                style="
+                  font-size: 0.7rem;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  font-weight: 600;
+                  color: var(--accent);
+                  margin-bottom: 1rem;
+                "
+              >
+                Quality &amp; Systems
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="skill-pill">Black-box Testing</span>
+                <span class="skill-pill">ISTQB Foundation</span>
+                <span class="skill-pill">Jira</span>
+                <span class="skill-pill">Bug Triage</span>
+                <span class="skill-pill">Technical Feasibility Audits</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     EDUCATION
+══════════════════════════════════════════ -->
+    <section
+      id="education"
+      style="
+        padding: 100px 0;
+        background: var(--surface);
+        transition: background 0.35s;
+      "
+    >
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-14 reveal">
+          <p class="section-label mb-3">Formation</p>
+          <h2
+            class="section-title"
+            style="font-size: clamp(2.2rem, 4vw, 3.5rem)"
+          >
+            Education &amp;<br />Certifications.
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Education -->
+          <div class="reveal">
+            <p
+              style="
+                font-size: 0.7rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                font-weight: 600;
+                color: var(--accent);
+                margin-bottom: 1.5rem;
+              "
+            >
+              Academic
+            </p>
+
+            <!-- VLU -->
+            <div style="display: flex; gap: 1.25rem; margin-bottom: 2rem">
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <div class="timeline-dot"></div>
+                <div class="timeline-line" style="height: 80px"></div>
+              </div>
+              <div class="card" style="flex: 1; padding: 1.5rem">
+                <p class="section-label mb-1">2020 – 2025</p>
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: 1.15rem;
+                    color: var(--fg);
+                    margin-bottom: 0.25rem;
+                  "
+                >
+                  Management Information Systems
+                </h3>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                    margin-bottom: 0.75rem;
+                  "
+                >
+                  Van Lang University
+                </p>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.82rem;
+                    line-height: 1.6;
+                  "
+                >
+                  Coursework: Software Testing, Business Analysis, Project
+                  Management
+                </p>
+              </div>
+            </div>
+
+            <!-- FPT Arena -->
+            <div style="display: flex; gap: 1.25rem">
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <div class="timeline-dot"></div>
+              </div>
+              <div class="card" style="flex: 1; padding: 1.5rem">
+                <p class="section-label mb-1">2020 – 2022</p>
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: 1.15rem;
+                    color: var(--fg);
+                    margin-bottom: 0.25rem;
+                  "
+                >
+                  Diploma in Multimedia Design
+                </h3>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                    margin-bottom: 0.75rem;
+                  "
+                >
+                  FPT Arena Multimedia
+                </p>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.82rem;
+                    line-height: 1.6;
+                  "
+                >
+                  Focus: Product Design, UX Research, UI Design
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certifications -->
+          <div class="reveal" style="transition-delay: 0.1s">
+            <p
+              style="
+                font-size: 0.7rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                font-weight: 600;
+                color: var(--accent);
+                margin-bottom: 1.5rem;
+              "
+            >
+              Certifications
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem">
+              <div
+                class="card"
+                style="padding: 1.5rem; border-left: 3px solid #0891b2"
+              >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#0891b2"
+                    stroke-width="2"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  <h3
+                    style="
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-weight: 400;
+                      font-size: 1.05rem;
+                      color: var(--fg);
+                    "
+                  >
+                    ISTQB Foundation Level
+                  </h3>
+                </div>
+                <p style="color: var(--muted); font-size: 0.82rem">
+                  Coursework completion in software testing fundamentals, test
+                  design, and QA processes.
+                </p>
+              </div>
+
+              <div
+                class="card"
+                style="padding: 1.5rem; border-left: 3px solid #1e4fd8"
+              >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1E4FD8"
+                    stroke-width="2"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  <h3
+                    style="
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-weight: 400;
+                      font-size: 1.05rem;
+                      color: var(--fg);
+                    "
+                  >
+                    IBM Creative &amp; Critical Thinking
+                  </h3>
+                </div>
+                <p style="color: var(--muted); font-size: 0.82rem">
+                  IBM-certified training in design thinking, creative
+                  problem-solving frameworks, and structured ideation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+    <section id="contact" style="padding: 100px 0">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-12 gap-12 items-center">
+          <div class="md:col-span-6 reveal">
+            <p class="section-label mb-4">Get In Touch</p>
+            <h2
+              class="section-title"
+              style="
+                font-size: clamp(2.2rem, 4.5vw, 4rem);
+                margin-bottom: 1.5rem;
+              "
+            >
+              Let's build<br />something<br /><em style="color: var(--accent)"
+                >remarkable.</em
+              >
+            </h2>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.95rem;
+                line-height: 1.75;
+                max-width: 400px;
+              "
+            >
+              Whether you're hiring for a PM role, a UX/UI designer, a QA
+              position, or something that doesn't fit a single label — I'd love
+              to talk.
+            </p>
+          </div>
+
+          <div class="md:col-span-6 reveal" style="transition-delay: 0.1s">
+            <div class="card" style="padding: 2.5rem">
+              <div style="display: flex; flex-direction: column; gap: 1.25rem">
+                <a href="mailto:duyle67.bit@gmail.com" class="contact-link">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                  <span>duyle67.bit@gmail.com</span>
+                </a>
+                <div class="divider"></div>
+                <a href="tel:0394494102" class="contact-link">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.18z"
+                    />
+                  </svg>
+                  <span>0394 494 102</span>
+                </a>
+                <div class="divider"></div>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener"
+                  class="contact-link"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                    />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                  <span>LinkedIn Profile</span>
+                </a>
+              </div>
+              <div style="margin-top: 2rem">
+                <a
+                  href="mailto:duyle67.bit@gmail.com"
+                  class="btn-primary"
+                  style="width: 100%; text-align: center; display: block"
+                >
+                  Send a Message
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+    <footer
+      style="
+        border-top: 1px solid var(--border);
+        padding: 2.5rem 0;
+        transition: border-color 0.35s;
+      "
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4"
+      >
+        <p
+          style="
+            font-family: &quot;Fraunces&quot;, serif;
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: var(--fg);
+          "
+        >
+          Duy Le<span style="color: var(--accent)">.</span>
+        </p>
+        <p
+          style="
+            font-size: 0.75rem;
+            font-family: &quot;DM Sans&quot;, sans-serif;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+          "
+        >
+          © 2025 · PM · UX/UI · QA · Operations · All rights reserved
+        </p>
+        <div style="display: flex; gap: 1.5rem">
+          <a
+            href="mailto:duyle67.bit@gmail.com"
+            style="
+              color: var(--muted);
+              font-size: 0.78rem;
+              text-decoration: none;
+              transition: color 0.2s;
+            "
+            onmouseover="this.style.color = 'var(--accent)'"
+            onmouseout="this.style.color = 'var(--muted)'"
+            >Email</a
+          >
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener"
+            style="
+              color: var(--muted);
+              font-size: 0.78rem;
+              text-decoration: none;
+              transition: color 0.2s;
+            "
+            onmouseover="this.style.color = 'var(--accent)'"
+            onmouseout="this.style.color = 'var(--muted)'"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+    <script>
+      // ── Filter System ──
+      function setupFilter(filterGroupId, gridId) {
+        const tabs = document.querySelectorAll(`#${filterGroupId} .filter-tab`);
+        const items = document.querySelectorAll(`#${gridId} .filterable`);
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            // Update active tab
+            tabs.forEach((t) => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            const filter = tab.dataset.filter;
+
+            items.forEach((item) => {
+              const tags = item.dataset.tags
+                ? item.dataset.tags.split(" ")
+                : [];
+              if (filter === "all" || tags.includes(filter)) {
+                item.classList.remove("hidden");
+                // Trigger re-animation
+                item.style.opacity = "0";
+                item.style.transform = "translateY(16px)";
+                requestAnimationFrame(() => {
+                  requestAnimationFrame(() => {
+                    item.style.opacity = "1";
+                    item.style.transform = "translateY(0)";
+                  });
+                });
+              } else {
+                item.classList.add("hidden");
+              }
+            });
+          });
+        });
+      }
+
+      setupFilter("exp-filters", "exp-grid");
+      setupFilter("proj-filters", "proj-grid");
+
+      // ── Scroll Reveal ──
+      const reveals = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
+      );
+
+      reveals.forEach((el) => observer.observe(el));
+
+      // ── Nav shrink on scroll ──
+      const nav = document.querySelector("nav");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 40) {
+          nav.style.boxShadow = "0 1px 24px rgba(0,0,0,0.06)";
+        } else {
+          nav.style.boxShadow = "none";
+        }
+      });
+
+      // ── Smooth scroll for nav links ──
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const target = document.querySelector(link.getAttribute("href"));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      // ── Dynamic Quote Rotation (Typewriter & Delete Effect) ──
+      const quotes = [
+        {
+          text: "Design is not just what it looks like and feels like. Design is how it works.",
+          author: "Steve Jobs",
+        },
+        {
+          text: "The goal is to turn data into information, and information into insight.",
+          author: "Carly Fiorina",
+        },
+        {
+          text: "Vision without execution is just hallucination.",
+          author: "Thomas Edison",
+        },
+        {
+          text: "No one can whistle a symphony. It takes a whole orchestra to play it.",
+          author: "H.E. Luccock",
+        },
+        {
+          text: "People don't want to buy a quarter-inch drill. They want a quarter-inch hole.",
+          author: "Theodore Levitt",
+        },
+      ];
+
+      let currentQuoteIndex = 0; // Starts at 0 (the Steve Jobs quote is already in HTML)
+      const quoteTextEl = document.getElementById("quote-text");
+      const quoteAuthorEl = document.getElementById("quote-author");
+
+      function eraseQuote(callback) {
+        const currentQuote = quotes[currentQuoteIndex];
+        let qLength = currentQuote.text.length;
+        let aLength = currentQuote.author.length;
+
+        // Calculate speed to delete everything in ~1000ms (1 second)
+        let totalChars = qLength + aLength;
+        let deleteSpeed = Math.max(1000 / totalChars, 10);
+
+        function eraseStep() {
+          if (aLength > 0) {
+            aLength--;
+            quoteAuthorEl.innerHTML = `– ${currentQuote.author.substring(0, aLength)}<span class="blinking-cursor">|</span>`;
+            setTimeout(eraseStep, deleteSpeed);
+          } else if (qLength > 0) {
+            quoteAuthorEl.innerHTML = "";
+            qLength--;
+            quoteTextEl.innerHTML = `"${currentQuote.text.substring(0, qLength)}<span class="blinking-cursor">|</span>"`;
+            setTimeout(eraseStep, deleteSpeed);
+          } else {
+            // Fully erased
+            quoteTextEl.innerHTML = `<span class="blinking-cursor">|</span>`;
+            if (callback) setTimeout(callback, 400); // Brief pause before typing next
+          }
+        }
+        eraseStep();
+      }
+
+      function typeQuote(callback) {
+        const currentQuote = quotes[currentQuoteIndex];
+        let qIndex = 0;
+        let aIndex = 0;
+
+        quoteAuthorEl.innerHTML = "";
+
+        function typeStep() {
+          if (qIndex < currentQuote.text.length) {
+            quoteTextEl.innerHTML = `"${currentQuote.text.substring(0, qIndex + 1)}<span class="blinking-cursor">|</span>"`;
+            qIndex++;
+            setTimeout(typeStep, 35); // Typing speed
+          } else if (aIndex < currentQuote.author.length) {
+            quoteTextEl.innerHTML = `"${currentQuote.text}"`;
+            quoteAuthorEl.innerHTML = `– ${currentQuote.author.substring(0, aIndex + 1)}<span class="blinking-cursor">|</span>`;
+            aIndex++;
+            setTimeout(typeStep, 35);
+          } else {
+            // Done typing
+            quoteAuthorEl.innerHTML = `– ${currentQuote.author}`;
+            if (callback) setTimeout(callback, 5000); // Wait 5 seconds before erasing again
+          }
+        }
+        typeStep();
+      }
+
+      function loopQuotes() {
+        eraseQuote(() => {
+          currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+          typeQuote(loopQuotes);
+        });
+      }
+
+      // Start the loop 5 seconds after page loads (since the first quote is already in HTML)
+      setTimeout(loopQuotes, 5000);
+    </script>
+  </body>
+</html>
