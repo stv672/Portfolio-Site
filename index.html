@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Duy Le — Multidisciplinary Problem Solver</title>
+    <title>Duy Le — Entry-level Product Designer Portfolio</title>
     <link
       rel="icon"
       type="image/svg+xml"
@@ -498,6 +498,74 @@
           object-fit: fill;
         }
       }
+
+      /* ── Visual placeholder (project cards) ── */
+      .visual-placeholder {
+        width: 100%;
+        min-height: 180px;
+        height: 100%;
+        border: 1px dashed rgba(100,116,139,.45);
+        background:
+          linear-gradient(135deg, rgba(30,79,216,.07), transparent 40%),
+          linear-gradient(315deg, rgba(124,58,237,.06), transparent 40%),
+          var(--surface);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--muted);
+        padding: 1.5rem;
+        margin-bottom: 0;
+        overflow: hidden;
+      }
+      .visual-placeholder.image-filled {
+        padding: 0;
+        border-style: solid;
+      }
+      .visual-placeholder.image-filled img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+      .visual-placeholder p {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      /* ── Process steps ── */
+      .process-step {
+        position: relative;
+        padding-left: 1.75rem;
+      }
+      .process-step::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.3rem;
+        width: 0.55rem;
+        height: 0.55rem;
+        background: var(--accent);
+        border-radius: 999px;
+      }
+      .process-step::after {
+        content: "";
+        position: absolute;
+        left: 0.25rem;
+        top: 1.1rem;
+        bottom: -1.5rem;
+        width: 1px;
+        background: var(--border);
+      }
+      .process-step:last-child::after { display: none; }
+
       /* ── Blinking Cursor ── */
       .blinking-cursor {
         font-weight: 400;
@@ -516,7 +584,7 @@
     </style>
   </head>
   <body>
-    <!-- ══════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      NAV
 ══════════════════════════════════════════ -->
     <nav
@@ -535,9 +603,9 @@
           DL<span style="color: var(--accent)">.</span>
         </a>
         <div class="hidden md:flex items-center gap-8">
+          <a href="#projects" class="nav-link">Work</a>
+          <a href="#process" class="nav-link">Process</a>
           <a href="#experience" class="nav-link">Experience</a>
-          <a href="#projects" class="nav-link">Projects</a>
-          <a href="#education" class="nav-link">Education</a>
           <a href="#contact" class="nav-link">Contact</a>
         </div>
       </div>
@@ -562,7 +630,7 @@
           <!-- Left col -->
           <div class="md:col-span-7 reveal">
             <p class="hero-label mb-6">
-              <span class="hero-line"></span>Multidisciplinary Problem Solver
+              <span class="hero-line"></span>Entry-level Product Designer
             </p>
             <div class="profile-header">
               <h1 class="hero-title" style="font-size: 5.8rem">
@@ -583,24 +651,20 @@
                 margin-bottom: 1.25rem;
               "
             >
-              Data-driven problem solver bridging UX strategy,<br
+              Product-minded UX/UI designer bridging user needs,<br
                 class="hidden md:block"
               />
-              system quality, and project operations.
+              system logic, and product quality.
             </p>
             <div
               class="divider"
               style="margin-bottom: 1.75rem; max-width: 320px"
             ></div>
             <p class="hero-bio" style="margin-bottom: 2.5rem">
-              I transition complex requirements into scalable digital solutions.
-              With a unique foundation in Management Information Systems, UI/UX,
-              and Quality Assurance, I lead cross-functional teams to deliver
-              high-impact products—whether it's an AI tool, a secure banking
-              system, or an award-winning indie band.
+              I design clear, scalable digital experiences by combining UX strategy, interface design, requirement thinking, and QA discipline. My work spans fintech concepts, AI-powered tools, cybersecurity monitoring dashboards, and award-winning design challenges.
             </p>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap">
-              <a href="#experience" class="btn-primary">View Projects</a>
+              <a href="#projects" class="btn-primary">View Featured Work</a>
               <a href="#contact" class="btn-outline">Contact Me</a>
             </div>
           </div>
@@ -610,7 +674,7 @@
             <div class="grid grid-cols-2 gap-4">
               <div class="card" style="grid-column: span 2">
                 <p class="section-label" style="margin-bottom: 0.5rem">
-                  Currently Available
+                  Currently Targeting
                 </p>
                 <p
                   style="
@@ -621,7 +685,7 @@
                     color: var(--fg);
                   "
                 >
-                  Open to full-time<br />& contract roles
+                  Entry-level Product Designer<br /><span style="color:var(--muted); font-size:1.1rem;">UX/UI Design · UX Design</span>
                 </p>
               </div>
               <div class="card" style="text-align: center">
@@ -647,7 +711,7 @@
                     margin-top: 0.3rem;
                   "
                 >
-                  Disciplines
+                  Core Cases
                 </p>
               </div>
               <div class="card" style="text-align: center">
@@ -735,40 +799,324 @@
       "
     >
       <div class="marquee-inner">
-        <span class="marquee-item">Product Management</span
+        <span class="marquee-item">Product Design</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">UX / UI Design</span
+        <span class="marquee-item">UX Strategy</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Quality Assurance</span
+        <span class="marquee-item">Interface Design</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Music Operations</span
+        <span class="marquee-item">Information Architecture</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Requirement Engineering</span
+        <span class="marquee-item">Design Systems</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Agile / Scrum</span
+        <span class="marquee-item">Developer Handoff</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Real User Monitoring</span
+        <span class="marquee-item">Product Quality</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Figma</span
+        <span class="marquee-item">RUM Analytics</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Product Management</span
+        <span class="marquee-item">Product Design</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">UX / UI Design</span
+        <span class="marquee-item">UX Strategy</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Quality Assurance</span
+        <span class="marquee-item">Interface Design</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Music Operations</span
+        <span class="marquee-item">Information Architecture</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Requirement Engineering</span
+        <span class="marquee-item">Design Systems</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Agile / Scrum</span
+        <span class="marquee-item">Developer Handoff</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Real User Monitoring</span
+        <span class="marquee-item">Product Quality</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
-        <span class="marquee-item">Figma</span
+        <span class="marquee-item">RUM Analytics</span
         ><span style="color: var(--accent); margin: 0 0.5rem">·</span>
       </div>
     </div>
+
+        <!-- ══════════════════════════════════════════
+     FEATURED WORK
+══════════════════════════════════════════ -->
+    <section
+      id="projects"
+      style="padding:100px 0;background:var(--surface);transition:background 0.35s;"
+    >
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-12 gap-8 items-end mb-14 reveal">
+          <div class="md:col-span-7">
+            <p class="section-label mb-3">Featured Case Studies</p>
+            <h2 class="section-title" style="font-size:clamp(2.2rem,4vw,3.5rem);">
+              Design work<br />with product context.
+            </h2>
+          </div>
+          <div class="md:col-span-5">
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;">
+              Four selected projects that show how I move from product framing and research to information architecture, UI decisions, handoff-ready flows, and design rationale.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid gap-8" id="proj-grid">
+
+          <!-- ── 01 Spendy ── -->
+          <article class="card reveal" style="padding:1.75rem 2rem;position:relative;overflow:hidden;transition-delay:0.05s;">
+            <div style="position:absolute;top:0;right:0;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:5rem;color:var(--border);line-height:1;padding:0.5rem 1rem;pointer-events:none;user-select:none;">01</div>
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+              <div class="lg:col-span-5">
+                <div class="visual-placeholder image-filled" style="height:100%;">
+                  <img src="./assets/spendy.png" alt="Spendy AI Digital Wallet project preview" />
+                </div>
+              </div>
+              <div class="lg:col-span-7">
+                <p class="section-label mb-2">VPBank Technology Hackathon 2025 · Top 200 / 1000+</p>
+                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--fg);margin-bottom:0.5rem;line-height:1.15;">Spendy — AI Digital Wallet</h3>
+                <div class="flex flex-wrap gap-2 mb-5">
+                  <span class="tag pm">Product Design</span>
+                  <span class="tag ux">UX/UI</span>
+                  <span class="tag pm">Fintech</span>
+                </div>
+                <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.25rem;">
+                  Led a 5-person team to shape a fintech MVP concept combining AI financial coaching, money management flows, and overspending alerts. I owned the BA and UX/UI scope: feature description, product flow, MVP funnel, information architecture, wireframes, and near-final UI.
+                </p>
+                <div class="divider" style="margin-bottom:1.25rem;"></div>
+                <div class="grid sm:grid-cols-3 gap-4 mb-6" style="margin-top:0.25rem;">
+                  <div>
+                    <p class="section-label mb-1">Problem</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Translate a broad fintech challenge into a focused MVP that helps users understand and manage spending behaviour.</p>
+                  </div>
+                  <div>
+                    <p class="section-label mb-1">My Role</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Team lead, BA, UX/UI design, IA, wireframing, flow definition, and pitch structure.</p>
+                  </div>
+                  <div>
+                    <p class="section-label mb-1">Output</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Concept pitch, MVP funnel, product flow, wireframes, and near-final UI in Figma.</p>
+                  </div>
+                </div>
+                <a
+                  href="https://www.figma.com/deck/4FuEujPfJLIZzeB9oATfUs/Spendy-Showcase?node-id=1-61&viewport=-148%2C-157%2C0.72&t=eJd5TInYPjroMNiG-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
+                  target="_blank"
+                  rel="noopener"
+                  class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                  style="text-decoration:none;color:var(--muted);white-space:nowrap;"
+                  onmouseover="this.style.color='var(--accent)'"
+                  onmouseout="this.style.color='var(--muted)'"
+                >
+                  View Case Study
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.3s ease;flex-shrink:0;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── 02 Chóp Chéc ── -->
+          <article class="card reveal" style="padding:1.75rem 2rem;position:relative;overflow:hidden;transition-delay:0.08s;">
+            <div style="position:absolute;top:0;right:0;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:5rem;color:var(--border);line-height:1;padding:0.5rem 1rem;pointer-events:none;user-select:none;">02</div>
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+              <div class="lg:col-span-5 lg:order-2">
+                <div class="visual-placeholder image-filled" style="height:100%;">
+                  <img src="./assets/chopchec.png" alt="Chóp Chéc AI Career Discovery project preview" />
+                </div>
+              </div>
+              <div class="lg:col-span-7 lg:order-1">
+                <p class="section-label mb-2">Runner-up · Lollypop Designathon Vietnam 2025</p>
+                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--fg);margin-bottom:0.5rem;line-height:1.15;">Chóp Chéc — AI Career Discovery Platform</h3>
+                <div class="flex flex-wrap gap-2 mb-5">
+                  <span class="tag ux">UX Research</span>
+                  <span class="tag pm">Product Flow</span>
+                  <span class="tag ux">Prototype</span>
+                </div>
+                <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.25rem;">
+                  Worked in a 7-person team to design a personalised career exploration platform for Vietnamese students. I contributed to research, funnel flow decisions, core feature definition, UX-critical layout review for the UI team, and product pitching through two mentor feedback rounds.
+                </p>
+                <div class="divider" style="margin-bottom:1.25rem;"></div>
+                <div class="grid sm:grid-cols-3 gap-4 mb-6" style="margin-top:0.25rem;">
+                  <div>
+                    <p class="section-label mb-1">Research</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Interviewed secondary/high-school students, mentors, and competition participants.</p>
+                  </div>
+                  <div>
+                    <p class="section-label mb-1">Output</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Persona, problem statement, solutions, wireframe, feature mockups, and prototype.</p>
+                  </div>
+                  <div>
+                    <p class="section-label mb-1">Recognition</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Runner-up project published by Lollypop Design.</p>
+                  </div>
+                </div>
+                <a
+                  href="https://lollypop.design/blog/personalized-career-exploration-platforms-for-students/"
+                  target="_blank"
+                  rel="noopener"
+                  class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                  style="text-decoration:none;color:var(--muted);white-space:nowrap;"
+                  onmouseover="this.style.color='var(--accent)'"
+                  onmouseout="this.style.color='var(--muted)'"
+                >
+                  View Published Case
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.3s ease;flex-shrink:0;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── 03 Network Monitoring Dashboard ── -->
+          <article class="card reveal" style="padding:1.75rem 2rem;position:relative;overflow:hidden;transition-delay:0.11s;">
+            <div style="position:absolute;top:0;right:0;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:5rem;color:var(--border);line-height:1;padding:0.5rem 1rem;pointer-events:none;user-select:none;">03</div>
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+              <div class="lg:col-span-5">
+                <div class="visual-placeholder image-filled" style="height:100%;">
+                  <img src="./assets/network.png" alt="Network Monitoring Dashboard project preview" />
+                </div>
+              </div>
+              <div class="lg:col-span-7">
+                <p class="section-label mb-2">THD Cybersecurity · HSC / ACB / Internal Monitoring</p>
+                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--fg);margin-bottom:0.5rem;line-height:1.15;">Network Monitoring Dashboard</h3>
+                <div class="flex flex-wrap gap-2 mb-5">
+                  <span class="tag ux">B2B UX</span>
+                  <span class="tag qa">Design System</span>
+                  <span class="tag qa">Handoff</span>
+                </div>
+                <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.25rem;">
+                  Redesigned monitoring dashboards that were overly technical, number-heavy, and difficult for C-level users, engineers, and operators to prioritise during incidents. Worked across UX audit, UI redesign, design system standardisation, handoff, and QA.
+                </p>
+                <div class="divider" style="margin-bottom:1.25rem;"></div>
+                <div class="grid sm:grid-cols-3 gap-4 mb-6" style="margin-top:0.25rem;">
+                  <div>
+                    <p class="section-label mb-1">Problem</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">No clear status hierarchy, weak issue prioritisation, and heavy translation between tech, PM, and BA.</p>
+                  </div>
+                  <div>
+                    <p class="section-label mb-1">Design Move</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Simplified monitoring logic into clearer states, summaries, IA, and reusable components.</p>
+                  </div>
+                  <div>
+                    <p class="section-label mb-1">Impact</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">57% faster design-to-development cycle across 3 monitoring dashboards using a shared component system.</p>
+                  </div>
+                </div>
+                <a
+                  href="https://www.figma.com/deck/nZD2V31ALy3hi3KuTsW3ti/Pig-Data-Rework?node-id=187-593&viewport=-148%2C-139%2C0.72&t=Vyjkw4BgBFeY7eCr-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
+                  target="_blank"
+                  rel="noopener"
+                  class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                  style="text-decoration:none;color:var(--muted);white-space:nowrap;"
+                  onmouseover="this.style.color='var(--accent)'"
+                  onmouseout="this.style.color='var(--muted)'"
+                >
+                  View Sanitised Deck
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.3s ease;flex-shrink:0;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── 04 Vexere Product Breakdown ── -->
+          <article class="card reveal" style="padding:1.75rem 2rem;position:relative;overflow:hidden;transition-delay:0.14s;">
+            <div style="position:absolute;top:0;right:0;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:5rem;color:var(--border);line-height:1;padding:0.5rem 1rem;pointer-events:none;user-select:none;">04</div>
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+              <div class="lg:col-span-5 lg:order-2">
+                <div class="visual-placeholder image-filled" style="height:100%;">
+                  <img src="./assets/vexere.png" alt="Vexere Product Breakdown project preview" />
+                </div>
+              </div>
+              <div class="lg:col-span-7 lg:order-1">
+                <p class="section-label mb-2">Personal Project · 3-Day Sprint</p>
+                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--fg);margin-bottom:0.5rem;line-height:1.15;">Vexere — Product Breakdown</h3>
+                <div class="flex flex-wrap gap-2 mb-5">
+                  <span class="tag ux">UX Audit</span>
+                  <span class="tag ux">Heuristic Evaluation</span>
+                  <span class="tag ux">IA Review</span>
+                </div>
+                <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.25rem;">
+                  Performed a comprehensive product breakdown of Vexere — a leading Vietnamese travel booking platform. Analysed user flows, goals, and information architecture to identify friction points and propose a redesigned interface grounded in heuristic principles.
+                </p>
+                <div class="divider" style="margin-bottom:1.25rem;"></div>
+                <div class="grid sm:grid-cols-3 gap-4 mb-6" style="margin-top:0.25rem;">
+                  <div>
+                    <p class="section-label mb-1">Scope</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Full UX audit covering booking flow, navigation IA, and key conversion screens.</p>
+                  </div>
+                  <div>
+                    <p class="section-label mb-1">Output</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Heuristic evaluation report, annotated screen audit, and redesign proposals.</p>
+                  </div>
+                  <div>
+                    <p class="section-label mb-1">Outcome</p>
+                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Independent research piece demonstrating structured UX critique and design rationale.</p>
+                  </div>
+                </div>
+                <a
+                  href="https://www.figma.com/board/D4HFaNIKcchJub6ovmf1lb/Vexere-Product-Breakdown?node-id=0-1&t=0N3pniQJDMTuVdZT-1"
+                  target="_blank"
+                  rel="noopener"
+                  class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                  style="text-decoration:none;color:var(--muted);white-space:nowrap;"
+                  onmouseover="this.style.color='var(--accent)'"
+                  onmouseout="this.style.color='var(--muted)'"
+                >
+                  View Audit Board
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.3s ease;flex-shrink:0;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+<!-- ══════════════════════════════════════════
+     HOW I WORK
+══════════════════════════════════════════ -->
+    <section id="process" style="padding:100px 0;">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid lg:grid-cols-12 gap-12">
+          <div class="lg:col-span-4 reveal">
+            <p class="section-label mb-3">How I Work</p>
+            <h2 class="section-title" style="font-size:clamp(2rem,3.5vw,3.2rem);margin-bottom:1.25rem;">
+              From messy requirements to usable product flows.
+            </h2>
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;">
+              My strongest pattern is combining UX thinking with system logic and product quality. I care about whether the flow is understandable, feasible, consistent, and testable.
+            </p>
+          </div>
+          <div class="lg:col-span-8 reveal" style="transition-delay:0.1s;">
+            <div class="card" style="padding:2rem;">
+              <div class="grid md:grid-cols-2 gap-8">
+                <div class="process-step">
+                  <p class="section-label mb-2">01 · Frame</p>
+                  <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.4rem;color:var(--fg);margin-bottom:0.6rem;">Clarify the problem</h3>
+                  <p style="color:var(--muted);font-size:0.88rem;line-height:1.75;">Turn vague briefs, stakeholder needs, and technical constraints into a clear problem statement and product scope.</p>
+                </div>
+                <div class="process-step">
+                  <p class="section-label mb-2">02 · Structure</p>
+                  <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.4rem;color:var(--fg);margin-bottom:0.6rem;">Map the product logic</h3>
+                  <p style="color:var(--muted);font-size:0.88rem;line-height:1.75;">Define information architecture, funnel flow, core features, and edge cases before polishing screens.</p>
+                </div>
+                <div class="process-step">
+                  <p class="section-label mb-2">03 · Design</p>
+                  <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.4rem;color:var(--fg);margin-bottom:0.6rem;">Wireframe to interface</h3>
+                  <p style="color:var(--muted);font-size:0.88rem;line-height:1.75;">Create wireframes, UI states, visual hierarchy, and reusable component patterns that are easy to hand off.</p>
+                </div>
+                <div class="process-step">
+                  <p class="section-label mb-2">04 · Validate</p>
+                  <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.4rem;color:var(--fg);margin-bottom:0.6rem;">Test clarity and quality</h3>
+                  <p style="color:var(--muted);font-size:0.88rem;line-height:1.75;">Use feedback, QA thinking, and behaviour signals such as Hotjar/RUM to identify friction and improve product quality.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ══════════════════════════════════════════
      EXPERIENCE
@@ -783,16 +1131,14 @@
               class="section-title"
               style="font-size: clamp(2.2rem, 4vw, 3.5rem)"
             >
-              Where I've<br />made an impact.
+              Where the work<br />became real.
             </h2>
           </div>
           <div class="md:col-span-5">
             <p
               style="color: var(--muted); font-size: 0.9rem; line-height: 1.75"
             >
-              From banking security systems to AI generative tools and live
-              music production — each role demanded a different lens, and I wore
-              them all.
+              Experience across AI tools, banking/cybersecurity systems, and creative operations gave me a practical understanding of product constraints, handoff, and quality.
             </p>
           </div>
         </div>
@@ -807,11 +1153,8 @@
             >
               All
             </button>
-            <button class="filter-tab" data-filter="pm" data-section="exp">
-              Product Management
-            </button>
             <button class="filter-tab" data-filter="ux" data-section="exp">
-              UX/UI Design
+              Product Design
             </button>
             <button class="filter-tab" data-filter="qa" data-section="exp">
               QA & Systems
@@ -858,9 +1201,8 @@
                 </p>
               </div>
               <div class="flex flex-wrap gap-2">
-                <span class="tag ux">UX/UI</span>
+                <span class="tag ux">Product Design</span>
                 <span class="tag qa">QA</span>
-                <span class="tag pm">PM</span>
               </div>
             </div>
             <div class="divider" style="margin-bottom: 1.25rem"></div>
@@ -962,8 +1304,7 @@
                 </p>
               </div>
               <div class="flex flex-wrap gap-2">
-                <span class="tag pm">PM</span>
-                <span class="tag ux">UX/UI</span>
+                <span class="tag ux">Product Design</span>
                 <span class="tag qa">QA</span>
               </div>
             </div>
@@ -1050,7 +1391,7 @@
                     margin-bottom: 0.25rem;
                   "
                 >
-                  Operations Lead &amp; Bassist
+                  Music Production &amp; Operations Lead
                 </h3>
                 <p
                   style="
@@ -1148,944 +1489,103 @@
     </section>
 
     <!-- ══════════════════════════════════════════
-     PROJECTS
+     CAPABILITIES
 ══════════════════════════════════════════ -->
-    <section
-      id="projects"
-      style="
-        padding: 100px 0;
-        background: var(--surface);
-        transition: background 0.35s;
-      "
-    >
+    <section id="capabilities" style="padding:100px 0;background:var(--surface);transition:background 0.35s;">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-12 gap-12 items-start">
+          <div class="md:col-span-4 reveal">
+            <p class="section-label mb-3">Capabilities</p>
+            <h2 class="section-title" style="font-size:clamp(2rem,3.5vw,3rem);">
+              The shape of my design practice.
+            </h2>
+          </div>
+          <div class="md:col-span-8 reveal" style="transition-delay:0.1s;">
+            <div class="grid md:grid-cols-3 gap-5">
+              <div class="card" style="padding:1.75rem;">
+                <p class="section-label mb-3">UX Strategy</p>
+                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.35rem;color:var(--fg);margin-bottom:0.75rem;">Understand the flow</h3>
+                <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;">Research synthesis, problem framing, persona, user journey, information architecture, funnel flow, usability thinking.</p>
+              </div>
+              <div class="card" style="padding:1.75rem;">
+                <p class="section-label mb-3">Interface Design</p>
+                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.35rem;color:var(--fg);margin-bottom:0.75rem;">Make it clear</h3>
+                <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;">Wireframes, UI layout, visual hierarchy, component usage, design systems, prototype-ready screens, responsive structure.</p>
+              </div>
+              <div class="card" style="padding:1.75rem;">
+                <p class="section-label mb-3">Product Quality</p>
+                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.35rem;color:var(--fg);margin-bottom:0.75rem;">Make it testable</h3>
+                <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;">Developer handoff, QA mindset, RUM/Hotjar analysis, bug documentation, edge-case thinking, feasibility alignment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- ══════════════════════════════════════════
+     SUPPORTING WORK
+══════════════════════════════════════════ -->
+    <section id="additional" style="padding:100px 0;">
       <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-12 gap-8 items-end mb-14 reveal">
           <div class="md:col-span-7">
-            <p class="section-label mb-3">Key Projects</p>
-            <h2
-              class="section-title"
-              style="font-size: clamp(2.2rem, 4vw, 3.5rem)"
-            >
-              Selected work<br />&amp; outcomes.
+            <p class="section-label mb-3">Supporting Work</p>
+            <h2 class="section-title" style="font-size:clamp(2.2rem,4vw,3.5rem);">
+              Supporting work<br />and side studies.
             </h2>
           </div>
           <div class="md:col-span-5">
-            <p
-              style="color: var(--muted); font-size: 0.9rem; line-height: 1.75"
-            >
-              High-stakes, time-boxed challenges that demanded full-stack
-              thinking — from research to business logic to final pitch.
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;">
+              Useful supporting work that shows product quality analysis, QA discipline, and creative operations beyond the core product design cases.
             </p>
           </div>
         </div>
+        <div class="grid md:grid-cols-3 gap-5">
 
-        <!-- Filter tabs for projects -->
-        <div class="reveal" style="margin-bottom: 2.5rem">
-          <div class="flex flex-wrap gap-2" id="proj-filters">
-            <button
-              class="filter-tab active"
-              data-filter="all"
-              data-section="proj"
-            >
-              All
-            </button>
-            <button class="filter-tab" data-filter="pm" data-section="proj">
-              Product Management
-            </button>
-            <button class="filter-tab" data-filter="ux" data-section="proj">
-              UX/UI Design
-            </button>
-            <button class="filter-tab" data-filter="qa" data-section="proj">
-              QA & Systems
-            </button>
-            <button class="filter-tab" data-filter="ops" data-section="proj">
-              Operations / Music
-            </button>
-          </div>
-        </div>
-
-        <!-- Project cards grid -->
-        <div class="grid md:grid-cols-2 gap-6" id="proj-grid">
-          <!-- Spendy -->
-          <div
-            class="card filterable reveal"
-            data-tags="pm ux"
-            style="
-              transition-delay: 0.05s;
-              position: relative;
-              overflow: hidden;
-            "
-          >
-            <div
-              style="
-                position: absolute;
-                top: 0;
-                right: 0;
-                font-family: &quot;Fraunces&quot;, serif;
-                font-style: italic;
-                font-weight: 300;
-                font-size: 5rem;
-                color: var(--border);
-                line-height: 1;
-                padding: 0.5rem 1rem;
-                pointer-events: none;
-                user-select: none;
-              "
-            >
-              01
-            </div>
-            <p class="section-label mb-1">VPBank Hackathon 2025</p>
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                margin-bottom: 0.75rem;
-              "
-            >
-              <span
-                class="award-badge"
-                style="
-                  color: #38bdf8;
-                  background: rgba(56, 189, 248, 0.1);
-                  border-color: rgba(56, 189, 248, 0.3);
-                "
-              >
-                Semi-Finalist
-              </span>
-            </div>
-            <h3
-              style="
-                font-family: &quot;Fraunces&quot;, serif;
-                font-weight: 400;
-                font-size: 1.6rem;
-                color: var(--fg);
-                margin-bottom: 0.35rem;
-                line-height: 1.2;
-              "
-            >
-              Spendy<br /><span style="color: var(--accent)"
-                >Digital Wallet</span
-              >
-            </h3>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.8rem;
-                font-weight: 500;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                margin-bottom: 1.25rem;
-              "
-            >
-              Role: Hybrid Lead (PM + UX)
+          <div class="card reveal" style="padding:1.75rem;">
+            <p class="section-label mb-2">Product Quality · UX Friction Analysis</p>
+            <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.3rem;color:var(--fg);margin-bottom:0.75rem;">Template.net — Sharing Flow Friction</h3>
+            <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;margin-bottom:1.25rem;">
+              Analysed production friction using Hotjar/RUM behaviour signals and exploratory QA across an 8-hour daily scope. The clearest case was a stuck sharing funnel where users could not share or public a design file. Documented critical defects, severity, root-cause hypotheses, and handoff notes through a Google Sheets bug tracker for developers.
             </p>
-            <div class="divider" style="margin-bottom: 1.25rem"></div>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.9rem;
-                line-height: 1.7;
-                margin-bottom: 1.5rem;
-              "
-            >
-              End-to-end ideation and business analysis for an AI-powered
-              financial MVP, conceived and delivered in
-              <strong style="color: var(--fg)">7 days</strong>. Defined the
-              product vision, user flows, and monetisation logic under
-              competitive pressure.
-            </p>
-            <div
-              class="mt-4 pt-4 flex items-center justify-between"
-              style="border-top: 1px solid var(--border)"
-            >
-              <div class="flex flex-wrap gap-2">
-                <span class="tag pm">PM</span>
-                <span class="tag ux">UX/UI</span>
-              </div>
-              <a
-                href="https://www.figma.com/deck/4FuEujPfJLIZzeB9oATfUs/Spendy-Showcase?node-id=1-61&viewport=-148%2C-157%2C0.72&t=eJd5TInYPjroMNiG-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
-                target="_blank"
-                rel="noopener"
-                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                style="
-                  text-decoration: none;
-                  color: var(--muted);
-                  white-space: nowrap;
-                "
-                onmouseover="this.style.color = 'var(--accent)'"
-                onmouseout="this.style.color = 'var(--muted)'"
-              >
-                See Details
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  style="transition: transform 0.3s ease; flex-shrink: 0"
-                  onmouseover="this.style.transform = 'translateX(3px)'"
-                  onmouseout="this.style.transform = 'translateX(0)'"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
+            <a class="nav-link" target="_blank" rel="noopener"
+               href="https://github.com/stv672/qa-case-study-templatenet"
+               style="font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;"
+               onmouseover="this.style.color='var(--accent)'"
+               onmouseout="this.style.color='var(--muted)'">See Details →</a>
           </div>
 
-          <!-- Chóp Chéc -->
-          <div
-            class="card filterable reveal"
-            data-tags="pm ux"
-            style="transition-delay: 0.1s; position: relative; overflow: hidden"
-          >
-            <div
-              style="
-                position: absolute;
-                top: 0;
-                right: 0;
-                font-family: &quot;Fraunces&quot;, serif;
-                font-style: italic;
-                font-weight: 300;
-                font-size: 5rem;
-                color: var(--border);
-                line-height: 1;
-                padding: 0.5rem 1rem;
-                pointer-events: none;
-                user-select: none;
-              "
-            >
-              02
-            </div>
-            <p class="section-label mb-1">Designathon 2025</p>
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                margin-bottom: 0.75rem;
-              "
-            >
-              <span class="award-badge">
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
-                  />
-                </svg>
-                Runner-up
-              </span>
-            </div>
-            <h3
-              style="
-                font-family: &quot;Fraunces&quot;, serif;
-                font-weight: 400;
-                font-size: 1.6rem;
-                color: var(--fg);
-                margin-bottom: 0.35rem;
-                line-height: 1.2;
-              "
-            >
-              Chóp Chéc<br /><span style="color: var(--accent)"
-                >AI Platform</span
-              >
-            </h3>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.8rem;
-                font-weight: 500;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                margin-bottom: 1.25rem;
-              "
-            >
-              Role: UX Lead
+          <div class="card reveal" style="padding:1.75rem;transition-delay:0.05s;">
+            <p class="section-label mb-2">Manual Testing</p>
+            <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.3rem;color:var(--fg);margin-bottom:0.75rem;">Swag Labs Testing</h3>
+            <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;margin-bottom:1.25rem;">
+              Full-cycle manual test across Authentication, Inventory, and Checkout Flow — using Equivalence Partitioning, BVA, State Transition, and Integration Testing. Produced a structured test design and execution report with 13 test cases, 92% pass rate, and a formal sign-off recommendation.
             </p>
-            <div class="divider" style="margin-bottom: 1.25rem"></div>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.9rem;
-                line-height: 1.7;
-                margin-bottom: 1.5rem;
-              "
-            >
-              Directed product strategy, funnel flows, and business logic
-              validation for AI-driven academic data models. Synthesised user
-              research into a coherent product narrative that secured Runner-up
-              honours.
-            </p>
-            <div
-              class="mt-4 pt-4 flex items-center justify-between"
-              style="border-top: 1px solid var(--border)"
-            >
-              <div class="flex flex-wrap gap-2">
-                <span class="tag ux">UX/UI</span>
-                <span class="tag pm">PM</span>
-              </div>
-              <a
-                href="https://lollypop.design/blog/personalized-career-exploration-platforms-for-students/"
-                target="_blank"
-                rel="noopener"
-                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                style="
-                  text-decoration: none;
-                  color: var(--muted);
-                  white-space: nowrap;
-                "
-                onmouseover="this.style.color = 'var(--accent)'"
-                onmouseout="this.style.color = 'var(--muted)'"
-              >
-                See Details
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  style="transition: transform 0.3s ease; flex-shrink: 0"
-                  onmouseover="this.style.transform = 'translateX(3px)'"
-                  onmouseout="this.style.transform = 'translateX(0)'"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
+            <a class="nav-link" target="_blank" rel="noopener"
+               href="https://github.com/stv672/qa-case-study-swag-labs"
+               style="font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;"
+               onmouseover="this.style.color='var(--accent)'"
+               onmouseout="this.style.color='var(--muted)'">See Details →</a>
           </div>
 
-          <div
-            class="card filterable reveal"
-            data-tags="ops"
-            style="
-              transition-delay: 0.15s;
-              position: relative;
-              overflow: hidden;
-            "
-          >
-            <div
-              style="
-                position: absolute;
-                top: 0;
-                right: 0;
-                font-family: &quot;Fraunces&quot;, serif;
-                font-style: italic;
-                font-weight: 300;
-                font-size: 5rem;
-                color: var(--border);
-                line-height: 1;
-                padding: 0.5rem 1rem;
-                pointer-events: none;
-                user-select: none;
-              "
-            >
-              03
-            </div>
-            <p class="section-label mb-1">2024 – 2026</p>
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                margin-bottom: 0.75rem;
-              "
-            >
-              <span
-                class="award-badge"
-                style="
-                  color: #1e4fd8;
-                  background: rgba(30, 79, 216, 0.1);
-                  border-color: rgba(30, 79, 216, 0.3);
-                "
-              >
-                Brand Partnerships
-              </span>
-            </div>
-            <h3
-              style="
-                font-family: &quot;Fraunces&quot;, serif;
-                font-weight: 400;
-                font-size: 1.6rem;
-                color: var(--fg);
-                margin-bottom: 0.35rem;
-                line-height: 1.2;
-              "
-            >
-              Music A&amp;R<br /><span style="color: var(--accent)"
-                >Operations</span
-              >
-            </h3>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.8rem;
-                font-weight: 500;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                margin-bottom: 1.25rem;
-              "
-            >
-              Role: Operations Lead
+          <div class="card reveal" style="padding:1.75rem;transition-delay:0.1s;">
+            <p class="section-label mb-2">Creative Operations</p>
+            <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.3rem;color:var(--fg);margin-bottom:0.75rem;">Music A&amp;R Operations</h3>
+            <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;margin-bottom:1.25rem;">
+              Release planning, partnership coordination, and cross-functional execution across creative teams. Grand Winner HOZO 2024 — 100K+ views driven through release planning and streaming analytics.
             </p>
-            <div class="divider" style="margin-bottom: 1.25rem"></div>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.9rem;
-                line-height: 1.7;
-                margin-bottom: 1.5rem;
-              "
-            >
-              Directed the strategic roadmap and end-to-end distribution across
-              global DSPs. Managed cross-functional teams (Production,
-              Marketing, Legal) and brokered co-branding campaigns with
-              <strong style="color: var(--fg)"
-                >Marshall, Vans, DirtyCoins, and DEGREY</strong
-              >. Leveraged streaming analytics to optimize release cycles,
-              driving 100K+ views.
-            </p>
-            <div
-              class="mt-4 pt-4 flex items-center justify-between"
-              style="border-top: 1px solid var(--border)"
-            >
-              <div class="flex flex-wrap gap-2">
-                <span class="tag ops">Operations</span>
-              </div>
-              <a
-                href="https://myown-portfolio.my.canva.site/profile-themeo"
-                target="_blank"
-                rel="noopener"
-                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                style="
-                  text-decoration: none;
-                  color: var(--muted);
-                  white-space: nowrap;
-                "
-                onmouseover="this.style.color = 'var(--accent)'"
-                onmouseout="this.style.color = 'var(--muted)'"
-              >
-                See Details
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  style="transition: transform 0.3s ease; flex-shrink: 0"
-                  onmouseover="this.style.transform = 'translateX(3px)'"
-                  onmouseout="this.style.transform = 'translateX(0)'"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Network Monitoring Dashboard -->
-          <div
-            class="card filterable reveal"
-            data-tags="ux"
-            style="transition-delay: 0.2s; position: relative; overflow: hidden"
-          >
-            <div
-              style="
-                position: absolute;
-                top: 0;
-                right: 0;
-                font-family: &quot;Fraunces&quot;, serif;
-                font-style: italic;
-                font-weight: 300;
-                font-size: 5rem;
-                color: var(--border);
-                line-height: 1;
-                padding: 0.5rem 1rem;
-                pointer-events: none;
-                user-select: none;
-              "
-            >
-              04
-            </div>
-            <p class="section-label mb-1">
-              THD Cybersecurity | 3-Month Project
-            </p>
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                margin-bottom: 0.75rem;
-              "
-            >
-              <span
-                class="award-badge"
-                style="
-                  color: #0891b2;
-                  background: rgba(8, 145, 178, 0.1);
-                  border-color: rgba(8, 145, 178, 0.3);
-                "
-              >
-                Dashboard Rework
-              </span>
-            </div>
-            <h3
-              style="
-                font-family: &quot;Fraunces&quot;, serif;
-                font-weight: 400;
-                font-size: 1.6rem;
-                color: var(--fg);
-                margin-bottom: 0.35rem;
-                line-height: 1.2;
-              "
-            >
-              Network Monitoring<br /><span style="color: var(--accent)"
-                >Dashboard</span
-              >
-            </h3>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.8rem;
-                font-weight: 500;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                margin-bottom: 1.25rem;
-              "
-            >
-              Role: UX/UI Designer
-            </p>
-            <div class="divider" style="margin-bottom: 1.25rem"></div>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.9rem;
-                line-height: 1.7;
-                margin-bottom: 1.5rem;
-              "
-            >
-              Conducted deep user research and behavior analysis to rework the
-              product. Scaled the interface logic to transition functionality
-              from the network team to the R&amp;D department, ensuring
-              high-density data clarity.
-            </p>
-            <div
-              class="mt-4 pt-4 flex items-center justify-between"
-              style="border-top: 1px solid var(--border)"
-            >
-              <div class="flex flex-wrap gap-2">
-                <span class="tag ux">UX/UI</span>
-              </div>
-              <a
-                href="https://www.figma.com/deck/nZD2V31ALy3hi3KuTsW3ti/Pig-Data-Rework?node-id=187-593&viewport=-148%2C-139%2C0.72&t=Vyjkw4BgBFeY7eCr-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
-                target="_blank"
-                rel="noopener"
-                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                style="
-                  text-decoration: none;
-                  color: var(--muted);
-                  white-space: nowrap;
-                "
-                onmouseover="this.style.color = 'var(--accent)'"
-                onmouseout="this.style.color = 'var(--muted)'"
-              >
-                See Details
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  style="transition: transform 0.3s ease; flex-shrink: 0"
-                  onmouseover="this.style.transform = 'translateX(3px)'"
-                  onmouseout="this.style.transform = 'translateX(0)'"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Vexere Product Breakdown -->
-          <div
-            class="card filterable reveal"
-            data-tags="ux"
-            style="
-              transition-delay: 0.25s;
-              position: relative;
-              overflow: hidden;
-            "
-          >
-            <div
-              style="
-                position: absolute;
-                top: 0;
-                right: 0;
-                font-family: &quot;Fraunces&quot;, serif;
-                font-style: italic;
-                font-weight: 300;
-                font-size: 5rem;
-                color: var(--border);
-                line-height: 1;
-                padding: 0.5rem 1rem;
-                pointer-events: none;
-                user-select: none;
-              "
-            >
-              05
-            </div>
-            <p class="section-label mb-1">Personal Project | 3-Day Sprint</p>
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                margin-bottom: 0.75rem;
-              "
-            >
-              <span
-                class="award-badge"
-                style="
-                  color: #7c3aed;
-                  background: rgba(124, 58, 237, 0.1);
-                  border-color: rgba(124, 58, 237, 0.3);
-                "
-              >
-                UX Audit
-              </span>
-            </div>
-            <h3
-              style="
-                font-family: &quot;Fraunces&quot;, serif;
-                font-weight: 400;
-                font-size: 1.6rem;
-                color: var(--fg);
-                margin-bottom: 0.35rem;
-                line-height: 1.2;
-              "
-            >
-              Vexere Product<br /><span style="color: var(--accent)"
-                >Breakdown</span
-              >
-            </h3>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.8rem;
-                font-weight: 500;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                margin-bottom: 1.25rem;
-              "
-            >
-              Role: Independent Researcher
-            </p>
-            <div class="divider" style="margin-bottom: 1.25rem"></div>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.9rem;
-                line-height: 1.7;
-                margin-bottom: 1.5rem;
-              "
-            >
-              Performed a comprehensive product breakdown including UX Audit and
-              Heuristic Evaluation. Analyzed user flows, goals, and information
-              architecture to propose a redesigned interface that solves
-              identified friction points.
-            </p>
-            <div
-              class="mt-4 pt-4 flex items-center justify-between"
-              style="border-top: 1px solid var(--border)"
-            >
-              <div class="flex flex-wrap gap-2">
-                <span class="tag ux">UX/UI</span>
-              </div>
-              <a
-                href="https://www.figma.com/board/D4HFaNIKcchJub6ovmf1lb/Vexere-Product-Breakdown?node-id=0-1&t=0N3pniQJDMTuVdZT-1"
-                target="_blank"
-                rel="noopener"
-                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                style="
-                  text-decoration: none;
-                  color: var(--muted);
-                  white-space: nowrap;
-                "
-                onmouseover="this.style.color = 'var(--accent)'"
-                onmouseout="this.style.color = 'var(--muted)'"
-              >
-                See Details
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  style="transition: transform 0.3s ease; flex-shrink: 0"
-                  onmouseover="this.style.transform = 'translateX(3px)'"
-                  onmouseout="this.style.transform = 'translateX(0)'"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- QA Case Study 01 — Template.net -->
-          <div
-            class="card filterable reveal"
-            data-tags="qa"
-            style="transition-delay: 0.3s; position: relative; overflow: hidden"
-          >
-            <div
-              style="
-                position: absolute;
-                top: 0;
-                right: 0;
-                font-family: &quot;Fraunces&quot;, serif;
-                font-style: italic;
-                font-weight: 300;
-                font-size: 5rem;
-                color: var(--border);
-                line-height: 1;
-                padding: 0.5rem 1rem;
-                pointer-events: none;
-                user-select: none;
-              "
-            >
-              06
-            </div>
-            <p class="section-label mb-1">QA Case Study | Exploratory Test</p>
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                margin-bottom: 0.75rem;
-              "
-            >
-              <span
-                class="award-badge"
-                style="
-                  color: #0891b2;
-                  background: rgba(8, 145, 178, 0.1);
-                  border-color: rgba(8, 145, 178, 0.3);
-                "
-              >
-                3 Defects Found
-              </span>
-            </div>
-            <h3
-              style="
-                font-family: &quot;Fraunces&quot;, serif;
-                font-weight: 400;
-                font-size: 1.6rem;
-                color: var(--fg);
-                margin-bottom: 0.35rem;
-                line-height: 1.2;
-              "
-            >
-              Template.net<br /><span style="color: var(--accent)"
-                >Exploratory Testing</span
-              >
-            </h3>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.8rem;
-                font-weight: 500;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                margin-bottom: 1.25rem;
-              "
-            >
-              Role: QA Tester (Solo)
-            </p>
-            <div class="divider" style="margin-bottom: 1.25rem"></div>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.9rem;
-                line-height: 1.7;
-                margin-bottom: 1.5rem;
-              "
-            >
-              Charter-based exploratory test on the Document Customization &amp; Sharing flow under a Free Account on Production. Identified
-              <strong style="color: var(--fg)">1 Blocker</strong> (infinite loading on shared link edit),
-              <strong style="color: var(--fg)">1 High</strong> (UI freeze on theme color), and
-              <strong style="color: var(--fg)">1 AI logic error</strong> (wrong color mapping). Documented root cause hypotheses and business impact per defect.
-            </p>
-            <div
-              class="mt-4 pt-4 flex items-center justify-between"
-              style="border-top: 1px solid var(--border)"
-            >
-              <div class="flex flex-wrap gap-2">
-                <span class="tag qa">QA</span>
-              </div>
-              <a
-                href="https://github.com/stv672/qa-case-study-templatenet"
-                target="_blank"
-                rel="noopener"
-                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                style="
-                  text-decoration: none;
-                  color: var(--muted);
-                  white-space: nowrap;
-                "
-                onmouseover="this.style.color = 'var(--accent)'"
-                onmouseout="this.style.color = 'var(--muted)'"
-              >
-                See Details
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  style="transition: transform 0.3s ease; flex-shrink: 0"
-                  onmouseover="this.style.transform = 'translateX(3px)'"
-                  onmouseout="this.style.transform = 'translateX(0)'"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- QA Case Study 02 — Swag Labs -->
-          <div
-            class="card filterable reveal"
-            data-tags="qa"
-            style="transition-delay: 0.35s; position: relative; overflow: hidden"
-          >
-            <div
-              style="
-                position: absolute;
-                top: 0;
-                right: 0;
-                font-family: &quot;Fraunces&quot;, serif;
-                font-style: italic;
-                font-weight: 300;
-                font-size: 5rem;
-                color: var(--border);
-                line-height: 1;
-                padding: 0.5rem 1rem;
-                pointer-events: none;
-                user-select: none;
-              "
-            >
-              07
-            </div>
-            <p class="section-label mb-1">QA Case Study | Manual Testing</p>
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                margin-bottom: 0.75rem;
-              "
-            >
-              <span
-                class="award-badge"
-                style="
-                  color: #0891b2;
-                  background: rgba(8, 145, 178, 0.1);
-                  border-color: rgba(8, 145, 178, 0.3);
-                "
-              >
-                13 Test Cases · 92% Pass
-              </span>
-            </div>
-            <h3
-              style="
-                font-family: &quot;Fraunces&quot;, serif;
-                font-weight: 400;
-                font-size: 1.6rem;
-                color: var(--fg);
-                margin-bottom: 0.35rem;
-                line-height: 1.2;
-              "
-            >
-              Swag Labs<br /><span style="color: var(--accent)"
-                >Manual Testing</span
-              >
-            </h3>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.8rem;
-                font-weight: 500;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                margin-bottom: 1.25rem;
-              "
-            >
-              Role: QA Tester (Solo)
-            </p>
-            <div class="divider" style="margin-bottom: 1.25rem"></div>
-            <p
-              style="
-                color: var(--muted);
-                font-size: 0.9rem;
-                line-height: 1.7;
-                margin-bottom: 1.5rem;
-              "
-            >
-              Full-cycle manual test across 3 features — Authentication, Inventory, and Checkout Flow — using Equivalence Partitioning, BVA, State Transition, and Integration Testing. Produced structured test design &amp; execution reports with
-              <strong style="color: var(--fg)">13 test cases</strong>,
-              <strong style="color: var(--fg)">1 defect</strong> logged, and a formal sign-off recommendation.
-            </p>
-            <div
-              class="mt-4 pt-4 flex items-center justify-between"
-              style="border-top: 1px solid var(--border)"
-            >
-              <div class="flex flex-wrap gap-2">
-                <span class="tag qa">QA</span>
-              </div>
-              <a
-                href="https://github.com/stv672/qa-case-study-swag-labs"
-                target="_blank"
-                rel="noopener"
-                class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                style="
-                  text-decoration: none;
-                  color: var(--muted);
-                  white-space: nowrap;
-                "
-                onmouseover="this.style.color = 'var(--accent)'"
-                onmouseout="this.style.color = 'var(--muted)'"
-              >
-                See Details
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  style="transition: transform 0.3s ease; flex-shrink: 0"
-                  onmouseover="this.style.transform = 'translateX(3px)'"
-                  onmouseout="this.style.transform = 'translateX(0)'"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
+            <a class="nav-link" target="_blank" rel="noopener"
+               href="https://myown-portfolio.my.canva.site/profile-themeo"
+               style="font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;"
+               onmouseover="this.style.color='var(--accent)'"
+               onmouseout="this.style.color='var(--muted)'">See Details →</a>
           </div>
 
         </div>
       </div>
     </section>
-
-    <!-- ══════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      SKILLS
 ══════════════════════════════════════════ -->
     <section id="skills" style="padding: 100px 0">
@@ -2106,8 +1606,7 @@
             <p
               style="color: var(--muted); font-size: 0.9rem; line-height: 1.75"
             >
-              A deliberately broad stack — because the best product decisions
-              live at the intersections.
+              Design, research, and quality skills that work together — not in silos.
             </p>
           </div>
           <div class="md:col-span-8 reveal" style="transition-delay: 0.1s">
@@ -2342,17 +1841,6 @@
                     margin-bottom: 0.5rem;
                   "
                 >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#0891b2"
-                    stroke-width="2"
-                  >
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
                   <h3
                     style="
                       font-family: &quot;Fraunces&quot;, serif;
@@ -2382,17 +1870,6 @@
                     margin-bottom: 0.5rem;
                   "
                 >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#1E4FD8"
-                    stroke-width="2"
-                  >
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
                   <h3
                     style="
                       font-family: &quot;Fraunces&quot;, serif;
@@ -2430,9 +1907,7 @@
                 margin-bottom: 1.5rem;
               "
             >
-              Let's build<br />something<br /><em style="color: var(--accent)"
-                >remarkable.</em
-              >
+              Let's build clear,<br />usable<br /><em style="color: var(--accent)">products.</em>
             </h2>
             <p
               style="
@@ -2442,9 +1917,7 @@
                 max-width: 400px;
               "
             >
-              Whether you're hiring for a PM role, a UX/UI designer, a QA
-              position, or something that doesn't fit a single label — I'd love
-              to talk.
+              Open to entry-level Product Designer and UX/UI Designer roles. If you're building something that needs clear thinking and solid execution, let's talk.
             </p>
           </div>
 
@@ -2551,7 +2024,7 @@
             letter-spacing: 0.06em;
           "
         >
-          © 2025 · PM · UX/UI · QA · Operations · All rights reserved
+          © 2025 · Product Design · UX/UI · QA · All rights reserved
         </p>
         <div style="display: flex; gap: 1.5rem">
           <a
@@ -2625,7 +2098,6 @@
       }
 
       setupFilter("exp-filters", "exp-grid");
-      setupFilter("proj-filters", "proj-grid");
 
       // ── Scroll Reveal ──
       const reveals = document.querySelectorAll(".reveal");
