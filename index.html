@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Duy Le Personal Worksite</title>
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="./fav.svg"
-    />
+    <link rel="icon" type="image/svg+xml" href="./fav.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -156,7 +152,10 @@
         line-height: 1.75;
         max-width: 500px;
       }
-
+      .my-3 {
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
       /* ── Buttons ── */
       .btn-primary {
         background-color: var(--accent);
@@ -237,7 +236,7 @@
       }
 
       /* ── Tags ── */
-      .tag {
+      /* ──.tag {
         display: inline-flex;
         align-items: center;
         font-size: 0.68rem;
@@ -245,9 +244,9 @@
         font-weight: 500;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        padding: 0.25rem 0.65rem;
-        border-radius: 0;
-        border: 1px solid var(--border);
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        padding-right: 0.9rem;
         color: var(--muted);
         background: transparent;
         transition:
@@ -256,26 +255,74 @@
           border-color 0.2s;
       }
       .tag.pm {
-        border-color: #1e4fd8;
         color: #1e4fd8;
-        background: rgba(30, 79, 216, 0.07);
       }
       .tag.ux {
-        border-color: #7c3aed;
         color: #7c3aed;
-        background: rgba(124, 58, 237, 0.07);
       }
       .tag.qa {
-        border-color: #0891b2;
         color: #0891b2;
-        background: rgba(8, 145, 178, 0.07);
       }
       .tag.ops {
-        border-color: #0369a1;
         color: #0369a1;
-        background: rgba(3, 105, 161, 0.07);
+      }
+── */
+      .tag {
+        display: inline-flex;
+        align-items: center;
+
+        font-size: 0.68rem;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        padding-right: 0.9rem;
+
+        color: var(--muted);
+        background: transparent;
       }
 
+      .tag-text {
+        position: relative;
+        display: inline-block;
+      }
+
+      .tag-text::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+
+        width: 0;
+        transition: width 300ms ease;
+      }
+
+      .tag:hover .tag-text::after {
+        width: 100%;
+      }
+
+      .tag.pm {
+        color: #1e4fd8;
+      }
+
+      .tag.ux {
+        color: #7c3aed;
+      }
+
+      .tag.qa {
+        color: #0891b2;
+      }
+
+      .tag.ops {
+        color: #0369a1;
+      }
       /* ── Filter tabs ── */
       .filter-tab {
         font-family: "DM Sans", sans-serif;
@@ -504,10 +551,10 @@
         width: 100%;
         min-height: 180px;
         height: 100%;
-        border: 1px dashed rgba(100,116,139,.45);
+        border: 1px dashed rgba(100, 116, 139, 0.45);
         background:
-          linear-gradient(135deg, rgba(30,79,216,.07), transparent 40%),
-          linear-gradient(315deg, rgba(124,58,237,.06), transparent 40%),
+          linear-gradient(135deg, rgba(30, 79, 216, 0.07), transparent 40%),
+          linear-gradient(315deg, rgba(124, 58, 237, 0.06), transparent 40%),
           var(--surface);
         display: flex;
         align-items: center;
@@ -564,7 +611,9 @@
         width: 1px;
         background: var(--border);
       }
-      .process-step:last-child::after { display: none; }
+      .process-step:last-child::after {
+        display: none;
+      }
 
       /* ── Blinking Cursor ── */
       .blinking-cursor {
@@ -584,7 +633,7 @@
     </style>
   </head>
   <body>
-<!-- ══════════════════════════════════════════
+    <!-- ══════════════════════════════════════════
      NAV
 ══════════════════════════════════════════ -->
     <nav
@@ -661,7 +710,11 @@
               style="margin-bottom: 1.75rem; max-width: 320px"
             ></div>
             <p class="hero-bio" style="margin-bottom: 2.5rem">
-              I design clear, scalable digital experiences by combining UX strategy, interface design, requirement thinking, and QA discipline. My work spans fintech concepts, AI-powered tools, cybersecurity monitoring dashboards, and award-winning design challenges.
+              I design clear, scalable digital experiences by combining UX
+              strategy, interface design, requirement thinking, and QA
+              discipline. My work spans fintech concepts, AI-powered tools,
+              cybersecurity monitoring dashboards, and award-winning design
+              challenges.
             </p>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap">
               <a href="#projects" class="btn-primary">View Featured Work</a>
@@ -685,7 +738,10 @@
                     color: var(--fg);
                   "
                 >
-                  Entry-level Product Designer<br /><span style="color:var(--muted); font-size:1.1rem;">UX/UI Design · UX Design</span>
+                  Entry-level Product Designer<br /><span
+                    style="color: var(--muted); font-size: 1.1rem"
+                    >UX/UI Design · UX Design</span
+                  >
                 </p>
               </div>
               <div class="card" style="text-align: center">
@@ -834,63 +890,164 @@
       </div>
     </div>
 
-        <!-- ══════════════════════════════════════════
+    <!-- ══════════════════════════════════════════
      FEATURED WORK
 ══════════════════════════════════════════ -->
     <section
       id="projects"
-      style="padding:100px 0;background:var(--surface);transition:background 0.35s;"
+      style="
+        padding: 100px 0;
+        background: var(--surface);
+        transition: background 0.35s;
+      "
     >
       <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-12 gap-8 items-end mb-14 reveal">
           <div class="md:col-span-7">
             <p class="section-label mb-3">Featured Case Studies</p>
-            <h2 class="section-title" style="font-size:clamp(2.2rem,4vw,3.5rem);">
+            <h2
+              class="section-title"
+              style="font-size: clamp(2.2rem, 4vw, 3.5rem)"
+            >
               Design work<br />with product context.
             </h2>
           </div>
           <div class="md:col-span-5">
-            <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;">
-              Four selected projects that show how I move from product framing and research to information architecture, UI decisions, handoff-ready flows, and design rationale.
+            <p
+              style="color: var(--muted); font-size: 0.9rem; line-height: 1.75"
+            >
+              Four selected projects that show how I move from product framing
+              and research to information architecture, UI decisions,
+              handoff-ready flows, and design rationale.
             </p>
           </div>
         </div>
 
         <div class="grid gap-8" id="proj-grid">
-
           <!-- ── 01 Spendy ── -->
-          <article class="card reveal" style="padding:1.75rem 2rem;position:relative;overflow:hidden;transition-delay:0.05s;">
-            <div style="position:absolute;top:0;right:0;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:5rem;color:var(--border);line-height:1;padding:0.5rem 1rem;pointer-events:none;user-select:none;">01</div>
+          <article
+            class="card reveal"
+            style="
+              padding: 1.75rem 2rem;
+              position: relative;
+              overflow: hidden;
+              transition-delay: 0.05s;
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-family: &quot;Fraunces&quot;, serif;
+                font-style: italic;
+                font-weight: 300;
+                font-size: 5rem;
+                color: var(--border);
+                line-height: 1;
+                padding: 0.5rem 1rem;
+                pointer-events: none;
+                user-select: none;
+              "
+            >
+              01
+            </div>
             <div class="grid lg:grid-cols-12 gap-8 items-stretch">
               <div class="lg:col-span-5">
-                <div class="visual-placeholder image-filled" style="height:100%;">
-                  <img src="./assets/spendy.png" alt="Spendy AI Digital Wallet project preview" />
+                <div
+                  class="visual-placeholder image-filled"
+                  style="height: 100%"
+                >
+                  <img
+                    src="./assets/spendy.png"
+                    alt="Spendy AI Digital Wallet project preview"
+                  />
                 </div>
               </div>
               <div class="lg:col-span-7">
-                <p class="section-label mb-2">VPBank Technology Hackathon 2025 · Top 200 / 1000+</p>
-                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--fg);margin-bottom:0.5rem;line-height:1.15;">Spendy — AI Digital Wallet</h3>
-                <div class="flex flex-wrap gap-2 mb-5">
-                  <span class="tag pm">Product Design</span>
-                  <span class="tag ux">UX/UI</span>
-                  <span class="tag pm">Fintech</span>
-                </div>
-                <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.25rem;">
-                  Led a 5-person team to shape a fintech MVP concept combining AI financial coaching, money management flows, and overspending alerts. I owned the BA and UX/UI scope: feature description, product flow, MVP funnel, information architecture, wireframes, and near-final UI.
+                <p class="section-label mb-2">
+                  VPBank Technology Hackathon 2025 · Top 200 / 1000+
                 </p>
-                <div class="divider" style="margin-bottom:1.25rem;"></div>
-                <div class="grid sm:grid-cols-3 gap-4 mb-6" style="margin-top:0.25rem;">
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+                    color: var(--fg);
+                    margin-bottom: 0.5rem;
+                    line-height: 1.15;
+                  "
+                >
+                  Spendy — AI Digital Wallet
+                </h3>
+                <div class="flex flex-wrap gap-2 my-3">
+                  <span class="tag pm"
+                    ><span class="tag-text">Product Design</span></span
+                  >
+                  <span class="tag ux"
+                    ><span class="tag-text">UX/UI</span></span
+                  >
+                  <span class="tag pm"
+                    ><span class="tag-text">Fintech</span></span
+                  >
+                </div>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.75;
+                    margin-bottom: 1.25rem;
+                  "
+                >
+                  Led a 5-person team to shape a fintech MVP concept combining
+                  AI financial coaching, money management flows, and
+                  overspending alerts. I owned the BA and UX/UI scope: feature
+                  description, product flow, MVP funnel, information
+                  architecture, wireframes, and near-final UI.
+                </p>
+                <div class="divider" style="margin-bottom: 1.25rem"></div>
+                <div
+                  class="grid sm:grid-cols-3 gap-4 mb-6"
+                  style="margin-top: 0.25rem"
+                >
                   <div>
                     <p class="section-label mb-1">Problem</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Translate a broad fintech challenge into a focused MVP that helps users understand and manage spending behaviour.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      Translate a broad fintech challenge into a focused MVP
+                      that helps users understand and manage spending behaviour.
+                    </p>
                   </div>
                   <div>
                     <p class="section-label mb-1">My Role</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Team lead, BA, UX/UI design, IA, wireframing, flow definition, and pitch structure.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      Team lead, BA, UX/UI design, IA, wireframing, flow
+                      definition, and pitch structure.
+                    </p>
                   </div>
                   <div>
                     <p class="section-label mb-1">Output</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Concept pitch, MVP funnel, product flow, wireframes, and near-final UI in Figma.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      Concept pitch, MVP funnel, product flow, wireframes, and
+                      near-final UI in Figma.
+                    </p>
                   </div>
                 </div>
                 <a
@@ -898,13 +1055,27 @@
                   target="_blank"
                   rel="noopener"
                   class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                  style="text-decoration:none;color:var(--muted);white-space:nowrap;"
-                  onmouseover="this.style.color='var(--accent)'"
-                  onmouseout="this.style.color='var(--muted)'"
+                  style="
+                    text-decoration: none;
+                    color: var(--muted);
+                    white-space: nowrap;
+                  "
+                  onmouseover="this.style.color = 'var(--accent)'"
+                  onmouseout="this.style.color = 'var(--muted)'"
                 >
                   View Case Study
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.3s ease;flex-shrink:0;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    style="transition: transform 0.3s ease; flex-shrink: 0"
+                    onmouseover="this.style.transform = 'translateX(3px)'"
+                    onmouseout="this.style.transform = 'translateX(0)'"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </a>
               </div>
@@ -912,38 +1083,128 @@
           </article>
 
           <!-- ── 02 Chóp Chéc ── -->
-          <article class="card reveal" style="padding:1.75rem 2rem;position:relative;overflow:hidden;transition-delay:0.08s;">
-            <div style="position:absolute;top:0;right:0;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:5rem;color:var(--border);line-height:1;padding:0.5rem 1rem;pointer-events:none;user-select:none;">02</div>
+          <article
+            class="card reveal"
+            style="
+              padding: 1.75rem 2rem;
+              position: relative;
+              overflow: hidden;
+              transition-delay: 0.08s;
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-family: &quot;Fraunces&quot;, serif;
+                font-style: italic;
+                font-weight: 300;
+                font-size: 5rem;
+                color: var(--border);
+                line-height: 1;
+                padding: 0.5rem 1rem;
+                pointer-events: none;
+                user-select: none;
+              "
+            >
+              02
+            </div>
             <div class="grid lg:grid-cols-12 gap-8 items-stretch">
               <div class="lg:col-span-5 lg:order-2">
-                <div class="visual-placeholder image-filled" style="height:100%;">
-                  <img src="./assets/chopchec.png" alt="Chóp Chéc AI Career Discovery project preview" />
+                <div
+                  class="visual-placeholder image-filled"
+                  style="height: 100%"
+                >
+                  <img
+                    src="./assets/chopchec.png"
+                    alt="Chóp Chéc AI Career Discovery project preview"
+                  />
                 </div>
               </div>
               <div class="lg:col-span-7 lg:order-1">
-                <p class="section-label mb-2">Runner-up · Lollypop Designathon Vietnam 2025</p>
-                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--fg);margin-bottom:0.5rem;line-height:1.15;">Chóp Chéc — AI Career Discovery Platform</h3>
-                <div class="flex flex-wrap gap-2 mb-5">
-                  <span class="tag ux">UX Research</span>
-                  <span class="tag pm">Product Flow</span>
-                  <span class="tag ux">Prototype</span>
-                </div>
-                <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.25rem;">
-                  Worked in a 7-person team to design a personalised career exploration platform for Vietnamese students. I contributed to research, funnel flow decisions, core feature definition, UX-critical layout review for the UI team, and product pitching through two mentor feedback rounds.
+                <p class="section-label mb-2">
+                  Runner-up · Lollypop Designathon Vietnam 2025
                 </p>
-                <div class="divider" style="margin-bottom:1.25rem;"></div>
-                <div class="grid sm:grid-cols-3 gap-4 mb-6" style="margin-top:0.25rem;">
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+                    color: var(--fg);
+                    margin-bottom: 0.5rem;
+                    line-height: 1.15;
+                  "
+                >
+                  Chóp Chéc — AI Career Discovery Platform
+                </h3>
+                <div class="flex flex-wrap gap-2 my-3">
+                  <span class="tag ux"
+                    ><span class="tag-text">UX Research</span></span
+                  >
+                  <span class="tag pm"
+                    ><span class="tag-text">Product Flow</span></span
+                  >
+                  <span class="tag ux"
+                    ><span class="tag-text">Prototype</span></span
+                  >
+                </div>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.75;
+                    margin-bottom: 1.25rem;
+                  "
+                >
+                  Worked in a 7-person team to design a personalised career
+                  exploration platform for Vietnamese students. I contributed to
+                  research, funnel flow decisions, core feature definition,
+                  UX-critical layout review for the UI team, and product
+                  pitching through two mentor feedback rounds.
+                </p>
+                <div class="divider" style="margin-bottom: 1.25rem"></div>
+                <div
+                  class="grid sm:grid-cols-3 gap-4 mb-6"
+                  style="margin-top: 0.25rem"
+                >
                   <div>
                     <p class="section-label mb-1">Research</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Interviewed secondary/high-school students, mentors, and competition participants.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      Interviewed secondary/high-school students, mentors, and
+                      competition participants.
+                    </p>
                   </div>
                   <div>
                     <p class="section-label mb-1">Output</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Persona, problem statement, solutions, wireframe, feature mockups, and prototype.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      Persona, problem statement, solutions, wireframe, feature
+                      mockups, and prototype.
+                    </p>
                   </div>
                   <div>
                     <p class="section-label mb-1">Recognition</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Runner-up project published by Lollypop Design.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      Runner-up project published by Lollypop Design.
+                    </p>
                   </div>
                 </div>
                 <a
@@ -951,13 +1212,27 @@
                   target="_blank"
                   rel="noopener"
                   class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                  style="text-decoration:none;color:var(--muted);white-space:nowrap;"
-                  onmouseover="this.style.color='var(--accent)'"
-                  onmouseout="this.style.color='var(--muted)'"
+                  style="
+                    text-decoration: none;
+                    color: var(--muted);
+                    white-space: nowrap;
+                  "
+                  onmouseover="this.style.color = 'var(--accent)'"
+                  onmouseout="this.style.color = 'var(--muted)'"
                 >
                   View Published Case
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.3s ease;flex-shrink:0;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    style="transition: transform 0.3s ease; flex-shrink: 0"
+                    onmouseover="this.style.transform = 'translateX(3px)'"
+                    onmouseout="this.style.transform = 'translateX(0)'"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </a>
               </div>
@@ -965,38 +1240,129 @@
           </article>
 
           <!-- ── 03 Network Monitoring Dashboard ── -->
-          <article class="card reveal" style="padding:1.75rem 2rem;position:relative;overflow:hidden;transition-delay:0.11s;">
-            <div style="position:absolute;top:0;right:0;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:5rem;color:var(--border);line-height:1;padding:0.5rem 1rem;pointer-events:none;user-select:none;">03</div>
+          <article
+            class="card reveal"
+            style="
+              padding: 1.75rem 2rem;
+              position: relative;
+              overflow: hidden;
+              transition-delay: 0.11s;
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-family: &quot;Fraunces&quot;, serif;
+                font-style: italic;
+                font-weight: 300;
+                font-size: 5rem;
+                color: var(--border);
+                line-height: 1;
+                padding: 0.5rem 1rem;
+                pointer-events: none;
+                user-select: none;
+              "
+            >
+              03
+            </div>
             <div class="grid lg:grid-cols-12 gap-8 items-stretch">
               <div class="lg:col-span-5">
-                <div class="visual-placeholder image-filled" style="height:100%;">
-                  <img src="./assets/network.png" alt="Network Monitoring Dashboard project preview" />
+                <div
+                  class="visual-placeholder image-filled"
+                  style="height: 100%"
+                >
+                  <img
+                    src="./assets/network.png"
+                    alt="Network Monitoring Dashboard project preview"
+                  />
                 </div>
               </div>
               <div class="lg:col-span-7">
-                <p class="section-label mb-2">THD Cybersecurity · HSC / ACB / Internal Monitoring</p>
-                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--fg);margin-bottom:0.5rem;line-height:1.15;">Network Monitoring Dashboard</h3>
-                <div class="flex flex-wrap gap-2 mb-5">
-                  <span class="tag ux">B2B UX</span>
-                  <span class="tag qa">Design System</span>
-                  <span class="tag qa">Handoff</span>
-                </div>
-                <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.25rem;">
-                  Redesigned monitoring dashboards that were overly technical, number-heavy, and difficult for C-level users, engineers, and operators to prioritise during incidents. Worked across UX audit, UI redesign, design system standardisation, handoff, and QA.
+                <p class="section-label mb-2">
+                  THD Cybersecurity · HSC / ACB / Internal Monitoring
                 </p>
-                <div class="divider" style="margin-bottom:1.25rem;"></div>
-                <div class="grid sm:grid-cols-3 gap-4 mb-6" style="margin-top:0.25rem;">
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+                    color: var(--fg);
+                    margin-bottom: 0.5rem;
+                    line-height: 1.15;
+                  "
+                >
+                  Network Monitoring Dashboard
+                </h3>
+                <div class="flex flex-wrap gap-2 my-3">
+                  <span class="tag ux"
+                    ><span class="tag-text">B2B UX</span></span
+                  >
+                  <span class="tag qa"
+                    ><span class="tag-text">Design System</span></span
+                  >
+                  <span class="tag qa"
+                    ><span class="tag-text">Handoff</span></span
+                  >
+                </div>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.75;
+                    margin-bottom: 1.25rem;
+                  "
+                >
+                  Redesigned monitoring dashboards that were overly technical,
+                  number-heavy, and difficult for C-level users, engineers, and
+                  operators to prioritise during incidents. Worked across UX
+                  audit, UI redesign, design system standardisation, handoff,
+                  and QA.
+                </p>
+                <div class="divider" style="margin-bottom: 1.25rem"></div>
+                <div
+                  class="grid sm:grid-cols-3 gap-4 mb-6"
+                  style="margin-top: 0.25rem"
+                >
                   <div>
                     <p class="section-label mb-1">Problem</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">No clear status hierarchy, weak issue prioritisation, and heavy translation between tech, PM, and BA.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      No clear status hierarchy, weak issue prioritisation, and
+                      heavy translation between tech, PM, and BA.
+                    </p>
                   </div>
                   <div>
                     <p class="section-label mb-1">Design Move</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Simplified monitoring logic into clearer states, summaries, IA, and reusable components.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      Simplified monitoring logic into clearer states,
+                      summaries, IA, and reusable components.
+                    </p>
                   </div>
                   <div>
                     <p class="section-label mb-1">Impact</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">57% faster design-to-development cycle across 3 monitoring dashboards using a shared component system.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      57% faster design-to-development cycle across 3 monitoring
+                      dashboards using a shared component system.
+                    </p>
                   </div>
                 </div>
                 <a
@@ -1004,13 +1370,27 @@
                   target="_blank"
                   rel="noopener"
                   class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                  style="text-decoration:none;color:var(--muted);white-space:nowrap;"
-                  onmouseover="this.style.color='var(--accent)'"
-                  onmouseout="this.style.color='var(--muted)'"
+                  style="
+                    text-decoration: none;
+                    color: var(--muted);
+                    white-space: nowrap;
+                  "
+                  onmouseover="this.style.color = 'var(--accent)'"
+                  onmouseout="this.style.color = 'var(--muted)'"
                 >
                   View Sanitised Deck
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.3s ease;flex-shrink:0;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    style="transition: transform 0.3s ease; flex-shrink: 0"
+                    onmouseover="this.style.transform = 'translateX(3px)'"
+                    onmouseout="this.style.transform = 'translateX(0)'"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </a>
               </div>
@@ -1018,38 +1398,129 @@
           </article>
 
           <!-- ── 04 Vexere Product Breakdown ── -->
-          <article class="card reveal" style="padding:1.75rem 2rem;position:relative;overflow:hidden;transition-delay:0.14s;">
-            <div style="position:absolute;top:0;right:0;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:5rem;color:var(--border);line-height:1;padding:0.5rem 1rem;pointer-events:none;user-select:none;">04</div>
+          <article
+            class="card reveal"
+            style="
+              padding: 1.75rem 2rem;
+              position: relative;
+              overflow: hidden;
+              transition-delay: 0.14s;
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-family: &quot;Fraunces&quot;, serif;
+                font-style: italic;
+                font-weight: 300;
+                font-size: 5rem;
+                color: var(--border);
+                line-height: 1;
+                padding: 0.5rem 1rem;
+                pointer-events: none;
+                user-select: none;
+              "
+            >
+              04
+            </div>
             <div class="grid lg:grid-cols-12 gap-8 items-stretch">
               <div class="lg:col-span-5 lg:order-2">
-                <div class="visual-placeholder image-filled" style="height:100%;">
-                  <img src="./assets/vexere.png" alt="Vexere Product Breakdown project preview" />
+                <div
+                  class="visual-placeholder image-filled"
+                  style="height: 100%"
+                >
+                  <img
+                    src="./assets/vexere.png"
+                    alt="Vexere Product Breakdown project preview"
+                  />
                 </div>
               </div>
               <div class="lg:col-span-7 lg:order-1">
-                <p class="section-label mb-2">Personal Project · 3-Day Sprint</p>
-                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--fg);margin-bottom:0.5rem;line-height:1.15;">Vexere — Product Breakdown</h3>
-                <div class="flex flex-wrap gap-2 mb-5">
-                  <span class="tag ux">UX Audit</span>
-                  <span class="tag ux">Heuristic Evaluation</span>
-                  <span class="tag ux">IA Review</span>
-                </div>
-                <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.25rem;">
-                  Performed a comprehensive product breakdown of Vexere — a leading Vietnamese travel booking platform. Analysed user flows, goals, and information architecture to identify friction points and propose a redesigned interface grounded in heuristic principles.
+                <p class="section-label mb-2">
+                  Personal Project · 3-Day Sprint
                 </p>
-                <div class="divider" style="margin-bottom:1.25rem;"></div>
-                <div class="grid sm:grid-cols-3 gap-4 mb-6" style="margin-top:0.25rem;">
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+                    color: var(--fg);
+                    margin-bottom: 0.5rem;
+                    line-height: 1.15;
+                  "
+                >
+                  Vexere — Product Breakdown
+                </h3>
+                <div class="flex flex-wrap gap-2 my-3">
+                  <span class="tag ux"
+                    ><span class="tag-text">UX Audit</span></span
+                  >
+                  <span class="tag ux"
+                    ><span class="tag-text">Heuristic Evaluation</span></span
+                  >
+                  <span class="tag ux"
+                    ><span class="tag-text">IA Review</span></span
+                  >
+                </div>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                    line-height: 1.75;
+                    margin-bottom: 1.25rem;
+                  "
+                >
+                  Performed a comprehensive product breakdown of Vexere — a
+                  leading Vietnamese travel booking platform. Analysed user
+                  flows, goals, and information architecture to identify
+                  friction points and propose a redesigned interface grounded in
+                  heuristic principles.
+                </p>
+                <div class="divider" style="margin-bottom: 1.25rem"></div>
+                <div
+                  class="grid sm:grid-cols-3 gap-4 mb-6"
+                  style="margin-top: 0.25rem"
+                >
                   <div>
                     <p class="section-label mb-1">Scope</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Full UX audit covering booking flow, navigation IA, and key conversion screens.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      Full UX audit covering booking flow, navigation IA, and
+                      key conversion screens.
+                    </p>
                   </div>
                   <div>
                     <p class="section-label mb-1">Output</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Heuristic evaluation report, annotated screen audit, and redesign proposals.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      Heuristic evaluation report, annotated screen audit, and
+                      redesign proposals.
+                    </p>
                   </div>
                   <div>
                     <p class="section-label mb-1">Outcome</p>
-                    <p style="font-size:0.85rem;line-height:1.65;color:var(--muted);">Independent research piece demonstrating structured UX critique and design rationale.</p>
+                    <p
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.65;
+                        color: var(--muted);
+                      "
+                    >
+                      Independent research piece demonstrating structured UX
+                      critique and design rationale.
+                    </p>
                   </div>
                 </div>
                 <a
@@ -1057,59 +1528,157 @@
                   target="_blank"
                   rel="noopener"
                   class="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                  style="text-decoration:none;color:var(--muted);white-space:nowrap;"
-                  onmouseover="this.style.color='var(--accent)'"
-                  onmouseout="this.style.color='var(--muted)'"
+                  style="
+                    text-decoration: none;
+                    color: var(--muted);
+                    white-space: nowrap;
+                  "
+                  onmouseover="this.style.color = 'var(--accent)'"
+                  onmouseout="this.style.color = 'var(--muted)'"
                 >
                   View Audit Board
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.3s ease;flex-shrink:0;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    style="transition: transform 0.3s ease; flex-shrink: 0"
+                    onmouseover="this.style.transform = 'translateX(3px)'"
+                    onmouseout="this.style.transform = 'translateX(0)'"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </a>
               </div>
             </div>
           </article>
-
         </div>
       </div>
     </section>
-<!-- ══════════════════════════════════════════
+    <!-- ══════════════════════════════════════════
      HOW I WORK
 ══════════════════════════════════════════ -->
-    <section id="process" style="padding:100px 0;">
+    <section id="process" style="padding: 100px 0">
       <div class="max-w-6xl mx-auto px-6">
         <div class="grid lg:grid-cols-12 gap-12">
           <div class="lg:col-span-4 reveal">
             <p class="section-label mb-3">How I Work</p>
-            <h2 class="section-title" style="font-size:clamp(2rem,3.5vw,3.2rem);margin-bottom:1.25rem;">
+            <h2
+              class="section-title"
+              style="
+                font-size: clamp(2rem, 3.5vw, 3.2rem);
+                margin-bottom: 1.25rem;
+              "
+            >
               From messy requirements to usable product flows.
             </h2>
-            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;">
-              My strongest pattern is combining UX thinking with system logic and product quality. I care about whether the flow is understandable, feasible, consistent, and testable.
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.8">
+              My strongest pattern is combining UX thinking with system logic
+              and product quality. I care about whether the flow is
+              understandable, feasible, consistent, and testable.
             </p>
           </div>
-          <div class="lg:col-span-8 reveal" style="transition-delay:0.1s;">
-            <div class="card" style="padding:2rem;">
+          <div class="lg:col-span-8 reveal" style="transition-delay: 0.1s">
+            <div class="card" style="padding: 2rem">
               <div class="grid md:grid-cols-2 gap-8">
                 <div class="process-step">
                   <p class="section-label mb-2">01 · Frame</p>
-                  <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.4rem;color:var(--fg);margin-bottom:0.6rem;">Clarify the problem</h3>
-                  <p style="color:var(--muted);font-size:0.88rem;line-height:1.75;">Turn vague briefs, stakeholder needs, and technical constraints into a clear problem statement and product scope.</p>
+                  <h3
+                    style="
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-weight: 400;
+                      font-size: 1.4rem;
+                      color: var(--fg);
+                      margin-bottom: 0.6rem;
+                    "
+                  >
+                    Clarify the problem
+                  </h3>
+                  <p
+                    style="
+                      color: var(--muted);
+                      font-size: 0.88rem;
+                      line-height: 1.75;
+                    "
+                  >
+                    Turn vague briefs, stakeholder needs, and technical
+                    constraints into a clear problem statement and product
+                    scope.
+                  </p>
                 </div>
                 <div class="process-step">
                   <p class="section-label mb-2">02 · Structure</p>
-                  <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.4rem;color:var(--fg);margin-bottom:0.6rem;">Map the product logic</h3>
-                  <p style="color:var(--muted);font-size:0.88rem;line-height:1.75;">Define information architecture, funnel flow, core features, and edge cases before polishing screens.</p>
+                  <h3
+                    style="
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-weight: 400;
+                      font-size: 1.4rem;
+                      color: var(--fg);
+                      margin-bottom: 0.6rem;
+                    "
+                  >
+                    Map the product logic
+                  </h3>
+                  <p
+                    style="
+                      color: var(--muted);
+                      font-size: 0.88rem;
+                      line-height: 1.75;
+                    "
+                  >
+                    Define information architecture, funnel flow, core features,
+                    and edge cases before polishing screens.
+                  </p>
                 </div>
                 <div class="process-step">
                   <p class="section-label mb-2">03 · Design</p>
-                  <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.4rem;color:var(--fg);margin-bottom:0.6rem;">Wireframe to interface</h3>
-                  <p style="color:var(--muted);font-size:0.88rem;line-height:1.75;">Create wireframes, UI states, visual hierarchy, and reusable component patterns that are easy to hand off.</p>
+                  <h3
+                    style="
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-weight: 400;
+                      font-size: 1.4rem;
+                      color: var(--fg);
+                      margin-bottom: 0.6rem;
+                    "
+                  >
+                    Wireframe to interface
+                  </h3>
+                  <p
+                    style="
+                      color: var(--muted);
+                      font-size: 0.88rem;
+                      line-height: 1.75;
+                    "
+                  >
+                    Create wireframes, UI states, visual hierarchy, and reusable
+                    component patterns that are easy to hand off.
+                  </p>
                 </div>
                 <div class="process-step">
                   <p class="section-label mb-2">04 · Validate</p>
-                  <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.4rem;color:var(--fg);margin-bottom:0.6rem;">Test clarity and quality</h3>
-                  <p style="color:var(--muted);font-size:0.88rem;line-height:1.75;">Use feedback, QA thinking, and behaviour signals such as Hotjar/RUM to identify friction and improve product quality.</p>
+                  <h3
+                    style="
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-weight: 400;
+                      font-size: 1.4rem;
+                      color: var(--fg);
+                      margin-bottom: 0.6rem;
+                    "
+                  >
+                    Test clarity and quality
+                  </h3>
+                  <p
+                    style="
+                      color: var(--muted);
+                      font-size: 0.88rem;
+                      line-height: 1.75;
+                    "
+                  >
+                    Use feedback, QA thinking, and behaviour signals such as
+                    Hotjar/RUM to identify friction and improve product quality.
+                  </p>
                 </div>
               </div>
             </div>
@@ -1138,7 +1707,9 @@
             <p
               style="color: var(--muted); font-size: 0.9rem; line-height: 1.75"
             >
-              Experience across AI tools, banking/cybersecurity systems, and creative operations gave me a practical understanding of product constraints, handoff, and quality.
+              Experience across AI tools, banking/cybersecurity systems, and
+              creative operations gave me a practical understanding of product
+              constraints, handoff, and quality.
             </p>
           </div>
         </div>
@@ -1494,31 +2065,98 @@
     <!-- ══════════════════════════════════════════
      CAPABILITIES
 ══════════════════════════════════════════ -->
-    <section id="capabilities" style="padding:100px 0;background:var(--surface);transition:background 0.35s;">
+    <section
+      id="capabilities"
+      style="
+        padding: 100px 0;
+        background: var(--surface);
+        transition: background 0.35s;
+      "
+    >
       <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-12 gap-12 items-start">
           <div class="md:col-span-4 reveal">
             <p class="section-label mb-3">Capabilities</p>
-            <h2 class="section-title" style="font-size:clamp(2rem,3.5vw,3rem);">
+            <h2
+              class="section-title"
+              style="font-size: clamp(2rem, 3.5vw, 3rem)"
+            >
               The shape of my design practice.
             </h2>
           </div>
-          <div class="md:col-span-8 reveal" style="transition-delay:0.1s;">
+          <div class="md:col-span-8 reveal" style="transition-delay: 0.1s">
             <div class="grid md:grid-cols-3 gap-5">
-              <div class="card" style="padding:1.75rem;">
+              <div class="card" style="padding: 1.75rem">
                 <p class="section-label mb-3">UX Strategy</p>
-                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.35rem;color:var(--fg);margin-bottom:0.75rem;">Understand the flow</h3>
-                <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;">Research synthesis, problem framing, persona, user journey, information architecture, funnel flow, usability thinking.</p>
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: 1.35rem;
+                    color: var(--fg);
+                    margin-bottom: 0.75rem;
+                  "
+                >
+                  Understand the flow
+                </h3>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.86rem;
+                    line-height: 1.75;
+                  "
+                >
+                  Research synthesis, problem framing, persona, user journey,
+                  information architecture, funnel flow, usability thinking.
+                </p>
               </div>
-              <div class="card" style="padding:1.75rem;">
+              <div class="card" style="padding: 1.75rem">
                 <p class="section-label mb-3">Interface Design</p>
-                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.35rem;color:var(--fg);margin-bottom:0.75rem;">Make it clear</h3>
-                <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;">Wireframes, UI layout, visual hierarchy, component usage, design systems, prototype-ready screens, responsive structure.</p>
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: 1.35rem;
+                    color: var(--fg);
+                    margin-bottom: 0.75rem;
+                  "
+                >
+                  Make it clear
+                </h3>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.86rem;
+                    line-height: 1.75;
+                  "
+                >
+                  Wireframes, UI layout, visual hierarchy, component usage,
+                  design systems, prototype-ready screens, responsive structure.
+                </p>
               </div>
-              <div class="card" style="padding:1.75rem;">
+              <div class="card" style="padding: 1.75rem">
                 <p class="section-label mb-3">Product Quality</p>
-                <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.35rem;color:var(--fg);margin-bottom:0.75rem;">Make it testable</h3>
-                <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;">Developer handoff, QA mindset, RUM/Hotjar analysis, bug documentation, edge-case thinking, feasibility alignment.</p>
+                <h3
+                  style="
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 400;
+                    font-size: 1.35rem;
+                    color: var(--fg);
+                    margin-bottom: 0.75rem;
+                  "
+                >
+                  Make it testable
+                </h3>
+                <p
+                  style="
+                    color: var(--muted);
+                    font-size: 0.86rem;
+                    line-height: 1.75;
+                  "
+                >
+                  Developer handoff, QA mindset, RUM/Hotjar analysis, bug
+                  documentation, edge-case thinking, feasibility alignment.
+                </p>
               </div>
             </div>
           </div>
@@ -1526,69 +2164,183 @@
       </div>
     </section>
 
-        <!-- ══════════════════════════════════════════
+    <!-- ══════════════════════════════════════════
      SUPPORTING WORK
 ══════════════════════════════════════════ -->
-    <section id="additional" style="padding:100px 0;">
+    <section id="additional" style="padding: 100px 0">
       <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-12 gap-8 items-end mb-14 reveal">
           <div class="md:col-span-7">
             <p class="section-label mb-3">Supporting Work</p>
-            <h2 class="section-title" style="font-size:clamp(2.2rem,4vw,3.5rem);">
+            <h2
+              class="section-title"
+              style="font-size: clamp(2.2rem, 4vw, 3.5rem)"
+            >
               Supporting work<br />and side studies.
             </h2>
           </div>
           <div class="md:col-span-5">
-            <p style="color:var(--muted);font-size:0.9rem;line-height:1.75;">
-              Useful supporting work that shows product quality analysis, QA discipline, and creative operations beyond the core product design cases.
+            <p
+              style="color: var(--muted); font-size: 0.9rem; line-height: 1.75"
+            >
+              Useful supporting work that shows product quality analysis, QA
+              discipline, and creative operations beyond the core product design
+              cases.
             </p>
           </div>
         </div>
         <div class="grid md:grid-cols-3 gap-5">
-
-          <div class="card reveal" style="padding:1.75rem;">
-            <p class="section-label mb-2">Product Quality · UX Friction Analysis</p>
-            <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.3rem;color:var(--fg);margin-bottom:0.75rem;">Template.net — Sharing Flow Friction</h3>
-            <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;margin-bottom:1.25rem;">
-              Analysed production friction using Hotjar/RUM behaviour signals and exploratory QA across an 8-hour daily scope. The clearest case was a stuck sharing funnel where users could not share or public a design file. Documented critical defects, severity, root-cause hypotheses, and handoff notes through a Google Sheets bug tracker for developers.
+          <div class="card reveal" style="padding: 1.75rem">
+            <p class="section-label mb-2">
+              Product Quality · UX Friction Analysis
             </p>
-            <a class="nav-link" target="_blank" rel="noopener"
-               href="https://github.com/stv672/qa-case-study-templatenet"
-               style="font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;"
-               onmouseover="this.style.color='var(--accent)'"
-               onmouseout="this.style.color='var(--muted)'">See Details →</a>
+            <h3
+              style="
+                font-family: &quot;Fraunces&quot;, serif;
+                font-weight: 400;
+                font-size: 1.3rem;
+                color: var(--fg);
+                margin-bottom: 0.75rem;
+              "
+            >
+              Template.net — Sharing Flow Friction
+            </h3>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.86rem;
+                line-height: 1.75;
+                margin-bottom: 1.25rem;
+              "
+            >
+              Analysed production friction using Hotjar/RUM behaviour signals
+              and exploratory QA across an 8-hour daily scope. The clearest case
+              was a stuck sharing funnel where users could not share or public a
+              design file. Documented critical defects, severity, root-cause
+              hypotheses, and handoff notes through a Google Sheets bug tracker
+              for developers.
+            </p>
+            <a
+              class="nav-link"
+              target="_blank"
+              rel="noopener"
+              href="https://github.com/stv672/qa-case-study-templatenet"
+              style="
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--muted);
+                text-decoration: none;
+                transition: color 0.2s;
+              "
+              onmouseover="this.style.color = 'var(--accent)'"
+              onmouseout="this.style.color = 'var(--muted)'"
+              >See Details →</a
+            >
           </div>
 
-          <div class="card reveal" style="padding:1.75rem;transition-delay:0.05s;">
+          <div
+            class="card reveal"
+            style="padding: 1.75rem; transition-delay: 0.05s"
+          >
             <p class="section-label mb-2">Manual Testing</p>
-            <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.3rem;color:var(--fg);margin-bottom:0.75rem;">Swag Labs Testing</h3>
-            <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;margin-bottom:1.25rem;">
-              Full-cycle manual test across Authentication, Inventory, and Checkout Flow — using Equivalence Partitioning, BVA, State Transition, and Integration Testing. Produced a structured test design and execution report with 13 test cases, 92% pass rate, and a formal sign-off recommendation.
+            <h3
+              style="
+                font-family: &quot;Fraunces&quot;, serif;
+                font-weight: 400;
+                font-size: 1.3rem;
+                color: var(--fg);
+                margin-bottom: 0.75rem;
+              "
+            >
+              Swag Labs Testing
+            </h3>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.86rem;
+                line-height: 1.75;
+                margin-bottom: 1.25rem;
+              "
+            >
+              Full-cycle manual test across Authentication, Inventory, and
+              Checkout Flow — using Equivalence Partitioning, BVA, State
+              Transition, and Integration Testing. Produced a structured test
+              design and execution report with 13 test cases, 92% pass rate, and
+              a formal sign-off recommendation.
             </p>
-            <a class="nav-link" target="_blank" rel="noopener"
-               href="https://github.com/stv672/qa-case-study-swag-labs"
-               style="font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;"
-               onmouseover="this.style.color='var(--accent)'"
-               onmouseout="this.style.color='var(--muted)'">See Details →</a>
+            <a
+              class="nav-link"
+              target="_blank"
+              rel="noopener"
+              href="https://github.com/stv672/qa-case-study-swag-labs"
+              style="
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--muted);
+                text-decoration: none;
+                transition: color 0.2s;
+              "
+              onmouseover="this.style.color = 'var(--accent)'"
+              onmouseout="this.style.color = 'var(--muted)'"
+              >See Details →</a
+            >
           </div>
 
-          <div class="card reveal" style="padding:1.75rem;transition-delay:0.1s;">
+          <div
+            class="card reveal"
+            style="padding: 1.75rem; transition-delay: 0.1s"
+          >
             <p class="section-label mb-2">Creative Operations</p>
-            <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.3rem;color:var(--fg);margin-bottom:0.75rem;">Music A&amp;R Operations</h3>
-            <p style="color:var(--muted);font-size:0.86rem;line-height:1.75;margin-bottom:1.25rem;">
-              Release planning, partnership coordination, and cross-functional execution across creative teams. Grand Winner HOZO 2024 — 100K+ views driven through release planning and streaming analytics.
+            <h3
+              style="
+                font-family: &quot;Fraunces&quot;, serif;
+                font-weight: 400;
+                font-size: 1.3rem;
+                color: var(--fg);
+                margin-bottom: 0.75rem;
+              "
+            >
+              Music A&amp;R Operations
+            </h3>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.86rem;
+                line-height: 1.75;
+                margin-bottom: 1.25rem;
+              "
+            >
+              Release planning, partnership coordination, and cross-functional
+              execution across creative teams. Grand Winner HOZO 2024 — 100K+
+              views driven through release planning and streaming analytics.
             </p>
-            <a class="nav-link" target="_blank" rel="noopener"
-               href="https://myown-portfolio.my.canva.site/profile-themeo"
-               style="font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;"
-               onmouseover="this.style.color='var(--accent)'"
-               onmouseout="this.style.color='var(--muted)'">See Details →</a>
+            <a
+              class="nav-link"
+              target="_blank"
+              rel="noopener"
+              href="https://myown-portfolio.my.canva.site/profile-themeo"
+              style="
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--muted);
+                text-decoration: none;
+                transition: color 0.2s;
+              "
+              onmouseover="this.style.color = 'var(--accent)'"
+              onmouseout="this.style.color = 'var(--muted)'"
+              >See Details →</a
+            >
           </div>
-
         </div>
       </div>
     </section>
-<!-- ══════════════════════════════════════════
+    <!-- ══════════════════════════════════════════
      SKILLS
 ══════════════════════════════════════════ -->
     <section id="skills" style="padding: 100px 0">
@@ -1609,7 +2361,8 @@
             <p
               style="color: var(--muted); font-size: 0.9rem; line-height: 1.75"
             >
-              Design, research, and quality skills that work together — not in silos.
+              Design, research, and quality skills that work together — not in
+              silos.
             </p>
           </div>
           <div class="md:col-span-8 reveal" style="transition-delay: 0.1s">
@@ -1910,7 +2663,10 @@
                 margin-bottom: 1.5rem;
               "
             >
-              Let's build clear,<br />usable<br /><em style="color: var(--accent)">products.</em>
+              Let's build clear,<br />usable<br /><em
+                style="color: var(--accent)"
+                >products.</em
+              >
             </h2>
             <p
               style="
@@ -1920,7 +2676,9 @@
                 max-width: 400px;
               "
             >
-              Open to entry-level Product Designer and UX/UI Designer roles. If you're building something that needs clear thinking and solid execution, let's talk.
+              Open to entry-level Product Designer and UX/UI Designer roles. If
+              you're building something that needs clear thinking and solid
+              execution, let's talk.
             </p>
           </div>
 
