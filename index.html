@@ -297,7 +297,7 @@
         bottom: -2px;
 
         width: 100%;
-        height: 1px;
+        height: 0.5px !important;
         background: currentColor;
 
         width: 0;
@@ -465,15 +465,34 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
+
         font-size: 0.68rem;
         font-family: "DM Sans", sans-serif;
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: #f59e0b;
-        background: rgba(245, 158, 11, 0.1);
-        border: 1px solid rgba(245, 158, 11, 0.3);
         padding: 0.3rem 0.7rem;
+      }
+
+      .award-text {
+        position: relative;
+        display: inline-block;
+      }
+
+      .award-text::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 0.5px !important;
+        background: currentColor;
+        transition: width 300ms ease;
+      }
+
+      .award-badge:hover .award-text::after {
+        width: 100%;
       }
 
       /* ── Contact ── */
@@ -1772,8 +1791,10 @@
                 </p>
               </div>
               <div class="flex flex-wrap gap-2">
-                <span class="tag ux">Product Design</span>
-                <span class="tag qa">QA</span>
+                <span class="tag ux"
+                  ><span class="tag-text">Product Design</span></span
+                >
+                <span class="tag qa"><span class="tag-text">QA</span></span>
               </div>
             </div>
             <div class="divider" style="margin-bottom: 1.25rem"></div>
@@ -1875,8 +1896,10 @@
                 </p>
               </div>
               <div class="flex flex-wrap gap-2">
-                <span class="tag ux">Product Design</span>
-                <span class="tag qa">QA</span>
+                <span class="tag ux"
+                  ><span class="tag-text">Product Design</span></span
+                >
+                <span class="tag qa"><span class="tag-text">QA</span></span>
               </div>
             </div>
             <div class="divider" style="margin-bottom: 1.25rem"></div>
@@ -1978,7 +2001,7 @@
                 </p>
               </div>
               <div class="flex flex-wrap gap-2 items-center">
-                <span class="award-badge">
+                <!-- <span class="award-badge">
                   <svg
                     width="10"
                     height="10"
@@ -1990,8 +2013,24 @@
                     />
                   </svg>
                   Grand Winner HOZO 2024
+                </span> -->
+                <span class="award-badge">
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+                    />
+                  </svg>
+
+                  <span class="award-text">Grand Winner HOZO 2024</span>
                 </span>
-                <span class="tag ops">Operations</span>
+                <span class="tag ops">
+                  <span class="tag-text">Operations</span>
+                </span>
               </div>
             </div>
             <div class="divider" style="margin-bottom: 1.25rem"></div>
